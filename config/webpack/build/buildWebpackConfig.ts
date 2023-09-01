@@ -19,7 +19,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
     },
     
     // указываются типы файлов для которых при импорте не нужно указывать расширение
-    resolve: buildResolvers(),
+    resolve: buildResolvers(options.paths),
 
     devtool: options.isDev ? 'inline-source-map' : undefined,
     devServer: options.isDev ? buildDevServer(options) : undefined,

@@ -1,11 +1,11 @@
 
-
 export type BuildMode = 'development' | 'production';
 
 export interface BuildPaths {
     entry: string;
     pathToHtml: string;
     build: string;
+    src: string;
 }
 
 export interface BuildEnv {

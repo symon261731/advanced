@@ -1,5 +1,5 @@
 import { FC, useMemo, useState } from "react";
-import { ETheme, LOCAL_STORAGE_THEME_KEY, ThemeContext } from "./ThemeContext";
+import { ETheme, LOCAL_STORAGE_THEME_KEY, ThemeContext } from "../lib/ThemeContext";
 
 
 
