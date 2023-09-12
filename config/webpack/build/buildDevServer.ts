@@ -7,5 +7,6 @@ export function buildDevServer(options: BuildOptions): Configuration {
         open: true,
         // для отсуствия ошибок get запросов при перезагрузки странице 
         historyApiFallback: true,
+        hot: true,
     }
 }

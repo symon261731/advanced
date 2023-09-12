@@ -7,11 +7,12 @@ import webpack from 'webpack';
 
 
 export function buildWebpackConfig(options: BuildOptions): webpack.Configuration { 
+    const {mode, paths, isDev} = options
 
     return {
-    mode: options.mode,
+    mode: mode,
     //входная точка
-    entry: options.paths.entry,
+    entry: paths.entry,
 
     module: {
         //обработка разных типов расширений
@@ -21,17 +22,17 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
     // указываются типы файлов для которых при импорте не нужно указывать расширение
     resolve: buildResolvers(options.paths),
 
-    devtool: options.isDev ? 'inline-source-map' : undefined,
-    devServer: options.isDev ? buildDevServer(options) : undefined,
+    devtool: isDev ? 'inline-source-map' : undefined,
+    devServer: isDev ? buildDevServer(options) : undefined,
 
     //выход
     output: { 
         filename: '[name].[contenthash].js',
-        path: options.paths.build,
+        path: paths.build,
         clean: true,
     },
     
     //плагины
-    plugins: buildPlugins(options.paths.pathToHtml),
+    plugins: buildPlugins(paths.pathToHtml, isDev),
 }
 }

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import classes from './Sidebar.module.scss';
 import { classNames } from 'shared/helpers/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
+import { LanguageSwitcher } from 'widgets/LanguageSwitcher/ui/LanguageSwitcher';
 
 interface Props {
     className?: string;
@@ -19,6 +20,7 @@ export const Sidebar = ({className}: Props) => {
         <div className={classNames(classes.sidebar, {[classes.opened]: isOpen}, [className])}>
             <div className={classes.switches}>
                 <ThemeSwitcher/>
+                <LanguageSwitcher/>
             </div>
             <button className={classes.toggleButton} onClick={toggleHandler}>{isOpen ?'<' : '>'}</button>
         </div>
