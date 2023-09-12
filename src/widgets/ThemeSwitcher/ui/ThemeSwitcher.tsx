@@ -1,5 +1,5 @@
 import { classNames } from "shared/helpers/classNames";
-import { ETheme } from "app/providers/ThemeProvider";
+import { ETheme, useTheme } from "app/providers/ThemeProvider";
 import classes from './ThemeSwitcher.module.scss';
 import LightIcon from 'assets/themeLight.svg';
 import DarkIcon from 'assets/themeDark.svg';
@@ -7,19 +7,19 @@ import { Button, ThemeButton } from "shared/uikit/Button/Button";
 
 interface Props  {
     className?: string;
-    onClick: ()=>void;
-    currentTheme: ETheme;
 }
 
-export const ThemeSwitcher = ({className, onClick, currentTheme }: Props) => {
+export const ThemeSwitcher = ({className }: Props) => {
+    const {theme, toggleTheme } = useTheme();
+
 
     return (
         <Button
             theme={ThemeButton.CLEAR} 
             className={classNames(classes.ThemeSwitcher, {}, [className])} 
-            onClick={()=> onClick()}
+            onClick={toggleTheme}
         >
-            {currentTheme === ETheme.LIGHT ? <LightIcon/> : <DarkIcon/>}
+            {theme === ETheme.LIGHT ? <LightIcon/> : <DarkIcon/>}
         </Button>
 
     )

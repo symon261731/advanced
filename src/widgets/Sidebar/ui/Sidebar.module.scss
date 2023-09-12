@@ -1,0 +1,29 @@
+
+.sidebar {
+    width: 80px;
+    height: calc(100vh - var(--navbar-height));
+    background-color: var(--inverted-bg-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: width 0.3s ease;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.opened {
+    width: 250px;
+}
+
+.switches {
+    display: flex;
+    flex-direction: column;
+}
+
+.toggleButton {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: -20px;
+    bottom: 10px;
+}

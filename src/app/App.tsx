@@ -1,10 +1,9 @@
 import './styles/index.scss';
-import { Link } from 'react-router-dom';
 import { useTheme } from 'app/providers/ThemeProvider/index';
 import { classNames } from 'shared/helpers/classNames';
 import { AppRouter } from './providers/router';
 import { Navbar } from 'widgets/Navbar';
-import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
+import { Sidebar } from 'widgets/Sidebar';
 
 export default function App () {
     const { theme, toggleTheme } = useTheme();
@@ -12,8 +11,10 @@ export default function App () {
     return (
         <div className={classNames('app', {}, [theme])}>
             <Navbar/>
-            <AppRouter/>
-            <ThemeSwitcher currentTheme={theme} onClick={toggleTheme}/>
+            <div className='content-page'>
+                <Sidebar/>
+                <AppRouter/>
+            </div>
         </div>
     )
 }
