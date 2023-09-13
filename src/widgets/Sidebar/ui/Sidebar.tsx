@@ -21,7 +21,7 @@ export const Sidebar = ({ className }: Props) => {
                 <ThemeSwitcher />
                 <LanguageSwitcher />
             </div>
-            <button type="button" className={classes.toggleButton} onClick={toggleHandler}>{isOpen ? '<' : '>'}</button>
+            <button type="button" className={classes.togglebutton} onClick={toggleHandler}>{isOpen ? '<' : '>'}</button>
         </div>
     );
 };

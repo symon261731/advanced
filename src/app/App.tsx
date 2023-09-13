@@ -7,7 +7,7 @@ import { Suspense } from 'react';
 import { AppRouter } from './providers/router';
 
 export default function App() {
-    const { theme, toggleTheme } = useTheme();
+    const { theme } = useTheme();
 
     return (
         <div className={classNames('app', {}, [theme])}>
