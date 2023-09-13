@@ -5,10 +5,10 @@ export function buildResolvers(paths: BuildPaths): ResolveOptions {
     return {
         extensions: ['.tsx', '.ts', '.js'],
 
-        // настройки для абсолютных путей 
+        // настройки для абсолютных путей
         preferAbsolute: true,
-        modules: [paths.src , 'node_modules'],
+        modules: [paths.src, 'node_modules'],
         mainFiles: ['index'],
-        alias: {}
+        alias: {},
     };
 }
