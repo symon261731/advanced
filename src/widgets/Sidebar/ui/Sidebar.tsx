@@ -4,11 +4,11 @@ import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LanguageSwitcher } from 'widgets/LanguageSwitcher/ui/LanguageSwitcher';
 import classes from './Sidebar.module.scss';
 
-interface Props {
+interface IProps {
     className?: string;
 }
 
-export const Sidebar = ({ className }: Props) => {
+export const Sidebar = ({ className }: IProps) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleHandler = () => {
@@ -16,12 +16,12 @@ export const Sidebar = ({ className }: Props) => {
     };
 
     return (
-        <div className={classNames(classes.sidebar, { [classes.opened]: isOpen }, [className])}>
+        <div className={classNames(classes.sidebar, { [classes.opened]: isOpen }, [className])} data-testid="sidebar">
             <div className={classes.switches}>
                 <ThemeSwitcher />
                 <LanguageSwitcher />
             </div>
-            <button type="button" className={classes.togglebutton} onClick={toggleHandler}>{isOpen ? '<' : '>'}</button>
+            <button data-testid="sidebar-toggle-button" type="button" className={classes.togglebutton} onClick={toggleHandler}>{isOpen ? '<' : '>'}</button>
         </div>
     );
 };
