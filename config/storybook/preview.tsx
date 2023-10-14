@@ -1,4 +1,6 @@
 import type { Preview } from '@storybook/react';
+import React from 'react';
+import '../../src/app/styles/index.scss';
 
 const preview: Preview = {
     parameters: {
@@ -10,6 +12,13 @@ const preview: Preview = {
             },
         },
     },
+    decorators: [
+        (Story) => (
+            <div className="app light">
+                <Story />
+            </div>
+        ),
+    ],
 };
 
 export default preview;

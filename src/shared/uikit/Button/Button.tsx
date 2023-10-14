@@ -3,7 +3,8 @@ import { classNames } from 'shared/helpers/classNames';
 import classes from './Button.module.scss';
 
 export enum ThemeButton {
-    CLEAR = 'clear'
+    CLEAR = 'clear',
+    OUTLINE = 'outline'
 }
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
