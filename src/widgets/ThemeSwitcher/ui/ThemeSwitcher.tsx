@@ -7,10 +7,13 @@ import classes from './ThemeSwitcher.module.scss';
 
 interface Props {
     className?: string;
+    themeForStorybook?: ETheme
 }
 
-export const ThemeSwitcher = ({ className }: Props) => {
+export const ThemeSwitcher = ({ className, themeForStorybook }: Props) => {
     const { theme, toggleTheme } = useTheme();
+
+    const calcTheme = (theme: ETheme) => (theme === ETheme.LIGHT ? <LightIcon /> : <DarkIcon />);
 
     return (
         <Button
@@ -18,7 +21,7 @@ export const ThemeSwitcher = ({ className }: Props) => {
             className={classNames(classes.themeswitcher, {}, [className])}
             onClick={toggleTheme}
         >
-            {theme === ETheme.LIGHT ? <LightIcon /> : <DarkIcon />}
+            {themeForStorybook ? calcTheme(themeForStorybook) : calcTheme(theme)}
         </Button>
 
     );
