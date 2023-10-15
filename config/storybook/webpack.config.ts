@@ -1,4 +1,4 @@
-import webpack from 'webpack';
+import webpack, { RuleSetRule } from 'webpack';
 import path from 'path';
 import { BuildPaths } from '../webpack/build/types/config';
 
@@ -60,11 +60,11 @@ export default ({ config }: {config: webpack.Configuration}) => {
         ],
     };
 
-    const svgLoader = {
-        test: /\.svg$/i,
-        issuer: /\.[jt]sx?$/,
-        use: ['@svgr/webpack'],
-    };
+    // const svgLoader = {
+    //     test: /\.svg$/i,
+    //     issuer: /\.[jt]sx?$/,
+    //     use: ['@svgr/webpack'],
+    // };
 
     const fileLoader = {
         test: /\.(png|jpe?g|gif)$/i,
@@ -75,11 +75,29 @@ export default ({ config }: {config: webpack.Configuration}) => {
         ],
     };
 
+    // eslint-disable-next-line no-param-reassign
+    config!.module!.rules = [
+        ...config!.module!.rules!.map((rule) => {
+            // @ts-ignore
+            if (/svg/.test(rule!.test)) {
+            // Silence the Storybook loaders for SVG files
+            // @ts-ignore
+                return { ...rule, exclude: /\.svg$/i };
+            }
+
+            return rule;
+        }),
+        // Add your custom SVG loader
+        {
+            test: /\.svg$/i,
+            use: ['@svgr/webpack'],
+        },
+    ];
+
     config.module?.rules?.push(
         babelLoader,
         tsLoader,
         scssLoader,
-        svgLoader,
         fileLoader,
     );
 
