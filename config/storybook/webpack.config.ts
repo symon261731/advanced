@@ -1,4 +1,4 @@
-import webpack, { RuleSetRule } from 'webpack';
+import webpack from 'webpack';
 import path from 'path';
 import { BuildPaths } from '../webpack/build/types/config';
 
@@ -59,12 +59,6 @@ export default ({ config }: {config: webpack.Configuration}) => {
             'sass-loader',
         ],
     };
-
-    // const svgLoader = {
-    //     test: /\.svg$/i,
-    //     issuer: /\.[jt]sx?$/,
-    //     use: ['@svgr/webpack'],
-    // };
 
     const fileLoader = {
         test: /\.(png|jpe?g|gif)$/i,

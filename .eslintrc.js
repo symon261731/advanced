@@ -37,6 +37,6 @@ module.exports = {
         'import/extensions': 0,
         'no-unused-vars': 1,
         'no-shadow': 0,
-        'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['data-testid'] }],
+        'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['data-testid', 'to'] }],
     },
 };

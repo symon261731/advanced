@@ -1,7 +1,6 @@
 import type { Preview } from '@storybook/react';
-// import { StyleDecorator } from '../../src/shared/config/storybook/decorators/StyleDecorator';
-import { ThemeDecorator } from '../../src/shared/config/storybook/decorators/ThemeDecorator';
 import { ETheme } from '../../src/app/providers/ThemeProvider/lib/ThemeContext';
+import { ThemeDecorator, StyleDecorator, BrowserRouterDecorator } from '../../src/shared/config/storybook';
 
 const preview: Preview = {
     parameters: {
@@ -14,11 +13,14 @@ const preview: Preview = {
         },
     },
     decorators: [
-        // (Story) => (
-        //     StyleDecorator(Story)
-        // ),
+        (Story) => (
+            StyleDecorator(Story)
+        ),
         (Story) => (
             ThemeDecorator(ETheme.LIGHT)(Story)
+        ),
+        (Story) => (
+            BrowserRouterDecorator(Story)
         ),
     ],
 };
