@@ -1,6 +1,5 @@
 import type { Preview } from '@storybook/react';
-import React from 'react';
-import '../../src/app/styles/index.scss';
+import { StyleDecorator } from '../../src/shared/config/storybook/decorators/StyleDecorator';
 
 const preview: Preview = {
     parameters: {
@@ -14,9 +13,7 @@ const preview: Preview = {
     },
     decorators: [
         (Story) => (
-            <div className="app light">
-                <Story />
-            </div>
+            StyleDecorator(Story)
         ),
     ],
 };
