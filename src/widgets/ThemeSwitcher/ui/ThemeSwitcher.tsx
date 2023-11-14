@@ -2,7 +2,7 @@ import { classNames } from 'shared/helpers/classNames';
 import { ETheme, useTheme } from 'app/providers/ThemeProvider';
 import LightIcon from 'assets/themeLight.svg';
 import DarkIcon from 'assets/themeDark.svg';
-import { Button, ThemeButton } from 'shared/uikit/Button/Button';
+import { Button, EThemeButton } from 'shared/uikit/Button/Button';
 import classes from './ThemeSwitcher.module.scss';
 
 interface Props {
@@ -17,7 +17,7 @@ export const ThemeSwitcher = ({ className, themeForStorybook }: Props) => {
 
     return (
         <Button
-            theme={ThemeButton.CLEAR}
+            theme={EThemeButton.CLEAR}
             className={classNames(classes.themeswitcher, {}, [className])}
             onClick={toggleTheme}
         >

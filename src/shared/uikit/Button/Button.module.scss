@@ -3,6 +3,14 @@
     color: var(--primary-color);
 }
 
+.normal {
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    padding: 10px 15px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+}
+
 .clear {
     padding: 0;
     margin: 0;
