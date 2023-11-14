@@ -2,9 +2,9 @@ name: lint, test, build
 run-name: ${{github.actor}} is learning github actions
 on:
     push:
-        branches: [master]
+        branches: [main]
     pull_request: 
-        branches: [master]
+        branches: [main]
 jobs:
     pipeline:
         runs-on: ubuntu-latest
