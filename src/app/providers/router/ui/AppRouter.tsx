@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Route, Routes } from 'react-router-dom';
@@ -14,7 +15,7 @@ export const AppRouter = () => {
         )}
         >
             <Routes>
-                {Object.values(routeConfig).map(({ path, element }) => <Route key={path} path={path} element={<div className="page-wrapper">{element}</div>} />)}
+                {Object.values(routeConfig).map(({ path, element }) => (<Route key={path} path={path} element={<div className="page-wrapper">{element}</div>} />))}
             </Routes>
         </Suspense>
     );
