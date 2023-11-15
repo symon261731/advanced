@@ -24,12 +24,13 @@ module.exports = {
 
     rules: {
         indent: [2, 4],
+        'max-len': 140,
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
         'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.tsx'] }],
         'react/require-default-props': 0,
         'react/react-in-jsx-scope': 0,
-        'react/jsx-props-no-spreading': 1,
+        'react/jsx-props-no-spreading': 0,
         'react/function-component-definition': 0,
         'import/no-unresolved': 0,
         'import/prefer-default-export': 0,

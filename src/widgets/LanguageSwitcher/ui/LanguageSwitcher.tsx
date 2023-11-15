@@ -3,10 +3,11 @@ import { classNames } from 'shared/helpers/classNames';
 import { Button, EThemeButton } from 'shared/uikit/Button/Button';
 
 interface Props {
-    className?: string
+    className?: string;
+    short?: boolean;
 }
 
-export const LanguageSwitcher = ({ className }: Props) => {
+export const LanguageSwitcher = ({ className,short }: Props) => {
     const { i18n, t } = useTranslation();
 
     const changeLanguage = () => {
@@ -19,7 +20,7 @@ export const LanguageSwitcher = ({ className }: Props) => {
             theme={EThemeButton.CLEAR}
             onClick={changeLanguage}
         >
-            {t('Язык')}
+            {t(short ? 'Короткий язык' : 'Язык')}
         </Button>
     );
 };

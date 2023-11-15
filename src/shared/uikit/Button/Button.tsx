@@ -5,23 +5,35 @@ import classes from './Button.module.scss';
 export enum EThemeButton {
     NORMAL = 'normal',
     CLEAR = 'clear',
-    OUTLINE = 'outline'
+    OUTLINE = 'outline',
+    BACKGROUND = 'background',
+    BACKGROUND_INVERTED = 'backgroundInverted'
 }
 
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+export enum EButttonSize {
+    M = 'size_m',
+    L = 'size_l',
+    XL = 'size_xl'
+}
+
+interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
     theme?: EThemeButton;
+    size?: EButttonSize;
+    square?: boolean;
 }
 
-export const Button: FC<Props> = (props) => {
+export const Button: FC<IProps> = (props) => {
     const {
-        className, children, theme = EThemeButton.NORMAL, ...otherProps
+        className, size=EButttonSize.M, square = false, children, theme = EThemeButton.NORMAL, ...otherProps
     } = props;
 
     return (
         <button
             type="button"
-            className={classNames(classes.button, {}, [className, classes[theme]])}
+            className={
+                classNames(classes.button, { [classes.square]: square }, [className, classes[theme], classes[size]])
+            }
             {...otherProps}
         >
             {children}
