@@ -25,7 +25,7 @@ interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const Button: FC<IProps> = (props) => {
     const {
-        className, size=EButttonSize.M, square = false, children, theme = EThemeButton.NORMAL, ...otherProps
+        className, size = EButttonSize.M, square = false, children, theme = EThemeButton.NORMAL, ...otherProps
     } = props;
 
     return (

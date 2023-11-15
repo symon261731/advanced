@@ -7,7 +7,7 @@ interface Props {
     short?: boolean;
 }
 
-export const LanguageSwitcher = ({ className,short }: Props) => {
+export const LanguageSwitcher = ({ className, short }: Props) => {
     const { i18n, t } = useTranslation();
 
     const changeLanguage = () => {
