@@ -6,9 +6,6 @@ interface IProps {
     className?: string;
 }
 
-export const Navbar: FC<IProps> = ({ className }) => {
-
-    return (
-        <div className={classNames(classes.navbar, {}, [className])}/>
-    );
-};
+export const Navbar: FC<IProps> = ({ className }) => (
+    <div className={classNames(classes.navbar, {}, [className])} />
+);
