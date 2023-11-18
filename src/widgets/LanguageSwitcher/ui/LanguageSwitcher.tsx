@@ -17,7 +17,7 @@ export const LanguageSwitcher = ({ className, short }: Props) => {
     return (
         <Button
             className={classNames('ad', {}, [className])}
-            theme={EThemeButton.CLEAR}
+            theme={EThemeButton.CLEAR_INVERTED}
             onClick={changeLanguage}
         >
             {t(short ? 'Короткий язык' : 'Язык')}

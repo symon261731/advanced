@@ -5,12 +5,11 @@ import DarkIcon from 'assets/themeDark.svg';
 import { Button, EThemeButton } from 'shared/uikit/Button/Button';
 import classes from './ThemeSwitcher.module.scss';
 
-interface Props {
+interface IProps {
     className?: string;
-    themeForStorybook?: ETheme
 }
 
-export const ThemeSwitcher = ({ className, themeForStorybook }: Props) => {
+export const ThemeSwitcher = ({ className }: IProps) => {
     const { theme, toggleTheme } = useTheme();
 
     const calcTheme = (theme: ETheme) => (theme === ETheme.LIGHT ? <LightIcon /> : <DarkIcon />);
@@ -21,7 +20,7 @@ export const ThemeSwitcher = ({ className, themeForStorybook }: Props) => {
             className={classNames(classes.themeswitcher, {}, [className])}
             onClick={toggleTheme}
         >
-            {themeForStorybook ? calcTheme(themeForStorybook) : calcTheme(theme)}
+            { calcTheme(theme)}
         </Button>
 
     );

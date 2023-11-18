@@ -1,5 +1,4 @@
 /* eslint-disable i18next/no-literal-string */
-import './styles/index.scss';
 import { useTheme } from 'app/providers/ThemeProvider/index';
 import { classNames } from 'shared/helpers/classNames';
 import { Navbar } from 'widgets/Navbar';

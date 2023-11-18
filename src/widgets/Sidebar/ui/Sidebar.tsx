@@ -3,7 +3,7 @@ import { classNames } from 'shared/helpers/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LanguageSwitcher } from 'widgets/LanguageSwitcher/ui/LanguageSwitcher';
 import { Button, EThemeButton } from 'shared/uikit/Button/Button';
-import { AppLink, AppLinkTheme } from 'shared/uikit/AppLink/AppLink';
+import { AppLink, TAppLinkTheme } from 'shared/uikit/AppLink/AppLink';
 import { useTranslation } from 'react-i18next';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import MainSvg from 'assets/mainPage.svg';
@@ -26,11 +26,11 @@ export const Sidebar = ({ className }: IProps) => {
     return (
         <div className={classNames(classes.sidebar, { [classes.opened]: isOpen }, [className])} data-testid="sidebar">
             <div className={classes.links}>
-                <AppLink theme={AppLinkTheme.INVERTED_SECONDARY} to={RoutePath.main}>
+                <AppLink theme={TAppLinkTheme.INVERTED_SECONDARY} to={RoutePath.main}>
                     <MainSvg />
                     {isOpen && <span>{t('Главная')}</span>}
                 </AppLink>
-                <AppLink theme={AppLinkTheme.INVERTED_SECONDARY} to={RoutePath.about}>
+                <AppLink theme={TAppLinkTheme.INVERTED_SECONDARY} to={RoutePath.about}>
                     <AboutSvg />
                     {isOpen && <span>{t('О сайте')}</span> }
                 </AppLink>

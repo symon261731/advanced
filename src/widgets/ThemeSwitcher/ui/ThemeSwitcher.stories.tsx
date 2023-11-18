@@ -5,7 +5,7 @@ import { ETheme } from 'app/providers/ThemeProvider';
 import { ThemeSwitcher } from './ThemeSwitcher';
 
 const meta: Meta<typeof ThemeSwitcher> = {
-    title: 'themeSwitcher',
+    title: 'Widgets/ThemeSwitcher',
     component: ThemeSwitcher,
 };
 
@@ -14,14 +14,10 @@ export default meta;
 type Story = StoryObj<typeof ThemeSwitcher>
 
 export const Primary: Story = {
-    args: {
-        themeForStorybook: ETheme.DARK,
-    },
+    args: {},
 };
 
 export const PrimaryDark: Story = {
-    args: {
-        themeForStorybook: ETheme.LIGHT,
-    },
+    args: {},
     decorators: [(story) => ThemeDecorator(ETheme.DARK)(story)],
 };

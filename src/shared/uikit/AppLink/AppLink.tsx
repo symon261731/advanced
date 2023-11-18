@@ -3,7 +3,7 @@ import { classNames } from 'shared/helpers/classNames';
 import { FC } from 'react';
 import classes from './AppLink.module.scss';
 
-export enum AppLinkTheme {
+export enum TAppLinkTheme {
     PRIMARY = 'primary',
     SECONDARY = 'secondary',
     INVERTED_PRIMARY = 'inverted_primary',
@@ -12,7 +12,7 @@ export enum AppLinkTheme {
 
 interface Props extends LinkProps {
     className?: string;
-    theme?: AppLinkTheme;
+    theme?: TAppLinkTheme;
 }
 
 export const AppLink: FC<Props> = (props) => {
@@ -20,7 +20,7 @@ export const AppLink: FC<Props> = (props) => {
         to,
         className,
         children,
-        theme = AppLinkTheme.PRIMARY,
+        theme = TAppLinkTheme.PRIMARY,
         ...otherProps
     } = props;
 
