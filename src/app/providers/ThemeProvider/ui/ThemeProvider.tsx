@@ -9,6 +9,7 @@ interface IProps {
 
 const ThemeProvider: FC<IProps> = ({ children, initialTheme }) => {
     const [theme, setTheme] = useState<ETheme>(initialTheme || defaultTheme);
+    document.body.className = initialTheme || theme;
 
     const defaultProps = useMemo(() => ({
         theme,

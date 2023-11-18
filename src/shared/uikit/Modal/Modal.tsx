@@ -2,7 +2,6 @@ import {
     MouseEvent, ReactNode, memo, useCallback, useEffect, useRef, useState,
 } from 'react';
 import { classNames } from 'shared/helpers/classNames';
-import { useTheme } from 'app/providers/ThemeProvider';
 import classes from './Modal.module.scss';
 import { Portal } from '../Portal/Portal';
 
@@ -21,7 +20,6 @@ export const Modal = memo(({
 }:IProps) => {
     const [isClosing, setIsClosing] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
-    const { theme } = useTheme();
 
     const closeWindow = useCallback(() => {
         if (onClose) {
@@ -63,10 +61,10 @@ export const Modal = memo(({
         return (
             <Portal>
                 <div className={classNames(classes.Modal, mods, [className])}>
-                    <div className={classes.overlay} onClick={() => closeWindow()}>
+                    <div className={classes.overlay} onClick={closeWindow}>
                         <div
-                            className={classNames(classes.content, { [classes.contentOpened]: isOpen }, [className, theme])}
-                            onClick={(e) => onContentClick(e)}
+                            className={classNames(classes.content, { [classes.contentOpened]: isOpen }, [className])}
+                            onClick={onContentClick}
                         >
                             {title && <h3 className={classes.title}>{title}</h3>}
                             {children}
