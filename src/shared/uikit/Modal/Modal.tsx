@@ -46,7 +46,6 @@ export const Modal = memo(({
     const mods: Record<string, boolean> = {
         [classes.opened]: isOpen,
         [classes.isClosing]: isClosing,
-        [classes[theme]]: true,
     };
 
     useEffect(() => {
@@ -66,7 +65,7 @@ export const Modal = memo(({
                 <div className={classNames(classes.Modal, mods, [className])}>
                     <div className={classes.overlay} onClick={() => closeWindow()}>
                         <div
-                            className={classNames(classes.content, { [classes.contentOpened]: isOpen }, [])}
+                            className={classNames(classes.content, { [classes.contentOpened]: isOpen }, [className, theme])}
                             onClick={(e) => onContentClick(e)}
                         >
                             {title && <h3 className={classes.title}>{title}</h3>}
