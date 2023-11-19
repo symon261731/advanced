@@ -6,11 +6,11 @@ import i18nForTests from 'shared/config/i18n/i18nForTest';
 import { Provider } from 'react-redux';
 import { createReduxStore } from 'app/providers/StoreProvider';
 import { DeepPartial } from '@reduxjs/toolkit';
-import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
+import { IStateSchema } from 'app/providers/StoreProvider/config/StateSchema';
 
 export interface IComponentRenderAllOptions {
     route?: string;
-    initialState?: DeepPartial<StateSchema>
+    initialState?: DeepPartial<IStateSchema>
 }
 
 export function componentRenderAll(component: ReactNode, options: IComponentRenderAllOptions = {}) {
@@ -19,7 +19,7 @@ export function componentRenderAll(component: ReactNode, options: IComponentRend
         initialState,
     } = options;
 
-    const store = createReduxStore(initialState as StateSchema);
+    const store = createReduxStore(initialState as IStateSchema);
 
     return render(
         <Provider store={store}>

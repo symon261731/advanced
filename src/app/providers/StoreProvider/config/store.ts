@@ -1,9 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { StateSchema } from './StateSchema';
+import { ReducersMapObject, configureStore } from '@reduxjs/toolkit';
+import { userReducer } from 'enteties/User';
+import { IStateSchema } from './StateSchema';
 
-export function createReduxStore(initialState?: StateSchema) {
-    return configureStore<StateSchema>({
-        reducer: {},
+export function createReduxStore(initialState?: IStateSchema) {
+    const rootReducers: ReducersMapObject<IStateSchema> = {
+        user: userReducer,
+    };
+
+    return configureStore<IStateSchema>({
+        reducer: rootReducers,
         devTools: __IS_DEV__,
         preloadedState: initialState,
     });

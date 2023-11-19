@@ -11,14 +11,16 @@ interface IProps {
     isOpen: boolean;
     title?: string;
     onClose: ()=>void;
+    lazy?: boolean;
 }
 
 const ANIMATION_DELAY = 300;
 
 export const Modal = memo(({
-    className, children, isOpen = true, onClose, title,
+    className, children, isOpen = true, onClose, title, lazy = false,
 }:IProps) => {
     const [isClosing, setIsClosing] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
     const closeWindow = useCallback(() => {
@@ -57,26 +59,30 @@ export const Modal = memo(({
         };
     }, [isOpen, onKeyDownHandler]);
 
-    if (isOpen) {
-        return (
-            <Portal>
-                <div className={classNames(classes.Modal, mods, [className])}>
-                    <div className={classes.overlay} onClick={closeWindow}>
-                        <div
-                            className={classNames(classes.content, { [classes.contentOpened]: isOpen }, [className])}
-                            onClick={onContentClick}
-                        >
-                            {title && <h3 className={classes.title}>{title}</h3>}
-                            {children}
-                        </div>
-                    </div>
-                </div>
-            </Portal>
-        );
+    useEffect(() => {
+        if (isOpen) {
+            setIsMounted(true);
+        }
+    }, [isOpen]);
+
+    if (lazy && isMounted === false) {
+        return null;
     }
 
     return (
-        null
+        <Portal>
+            <div className={classNames(classes.Modal, mods, [className])}>
+                <div className={classes.overlay} onClick={closeWindow}>
+                    <div
+                        className={classNames(classes.content, { [classes.contentOpened]: isOpen }, [className])}
+                        onClick={onContentClick}
+                    >
+                        {title && <h3 className={classes.title}>{title}</h3>}
+                        {children}
+                    </div>
+                </div>
+            </div>
+        </Portal>
     );
 });
 

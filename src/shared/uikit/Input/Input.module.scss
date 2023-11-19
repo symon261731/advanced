@@ -1,0 +1,25 @@
+.InputContainer {
+    width: 100%;
+}
+
+.Input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 7px;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.primary {
+    width: 100%;
+    font: var(--font-m);
+    border: 1px solid var(--primary-color);
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+
+    &::placeholder {
+        color: var(--primary-color);
+    }
+}
