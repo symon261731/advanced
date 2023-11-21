@@ -49,6 +49,7 @@ module.exports = {
         'react-hooks/rules-of-hooks': 2,
         'react-hooks/exhaustive-deps': 2,
         'no-param-reassign': 0,
+        camelcase: 0,
     },
     // overrrides: [
     //     {

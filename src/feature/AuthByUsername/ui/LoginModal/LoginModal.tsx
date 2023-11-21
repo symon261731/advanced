@@ -12,6 +12,6 @@ export const LoginModal = ({
     isOpen, onClose, className, lazy = false,
 }:IProps) => (
     <Modal isOpen={isOpen} onClose={onClose} className={className} lazy={lazy}>
-        <LoginForm />
+        <LoginForm isOpen={isOpen} />
     </Modal>
 );

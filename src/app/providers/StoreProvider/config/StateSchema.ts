@@ -1,5 +1,7 @@
 import { IUserSchema } from 'enteties/User';
+import { ILoginSchema } from 'feature/AuthByUsername';
 
 export interface IStateSchema {
-    user: IUserSchema
+    user: IUserSchema;
+    loginForm?: ILoginSchema;
 }

@@ -1,4 +1,4 @@
-import webpack from 'webpack';
+import webpack, { DefinePlugin } from 'webpack';
 import path from 'path';
 import { BuildPaths } from '../webpack/build/types/config';
 
@@ -94,6 +94,10 @@ export default ({ config }: {config: webpack.Configuration}) => {
         scssLoader,
         fileLoader,
     );
+
+    config.plugins?.push(new DefinePlugin({
+        __IS_DEV__: true,
+    }));
 
     return config;
 };

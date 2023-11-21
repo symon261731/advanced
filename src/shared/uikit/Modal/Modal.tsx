@@ -9,7 +9,6 @@ interface IProps {
     className?: string;
     children: ReactNode;
     isOpen: boolean;
-    title?: string;
     onClose: ()=>void;
     lazy?: boolean;
 }
@@ -17,7 +16,7 @@ interface IProps {
 const ANIMATION_DELAY = 300;
 
 export const Modal = memo(({
-    className, children, isOpen = true, onClose, title, lazy = false,
+    className, children, isOpen = true, onClose, lazy = false,
 }:IProps) => {
     const [isClosing, setIsClosing] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
@@ -77,7 +76,6 @@ export const Modal = memo(({
                         className={classNames(classes.content, { [classes.contentOpened]: isOpen }, [className])}
                         onClick={onContentClick}
                     >
-                        {title && <h3 className={classes.title}>{title}</h3>}
                         {children}
                     </div>
                 </div>

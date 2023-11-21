@@ -17,7 +17,6 @@ export const Primary: Story = {
         children: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
         Laboriosam suscipit amet minus saepe nobis? Obcaecati quos delectus atque sit? 
         Veniam magnam pariatur dignissimos mollitia eligendi qui magni, nobis quisquam explicabo!`,
-        title: 'Модальное окно',
     },
 };
 
@@ -26,7 +25,6 @@ export const Dark: Story = {
         children: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
         Laboriosam suscipit amet minus saepe nobis? Obcaecati quos delectus atque sit? 
         Veniam magnam pariatur dignissimos mollitia eligendi qui magni, nobis quisquam explicabo!`,
-        title: 'Модальное окно',
     },
     decorators: [(story) => ThemeDecorator(ETheme.DARK)(story)],
 };

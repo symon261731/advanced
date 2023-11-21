@@ -2,10 +2,17 @@
 import { classNames } from 'shared/helpers/classNames';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { userActions } from 'enteties/User';
 import { AppRouter } from './providers/router';
 
 export default function App() {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(userActions.setAuthData());
+    }, [dispatch]);
     return (
         <div className={classNames('app', {}, [])}>
             <Suspense fallback="загрузка перевода">

@@ -20,20 +20,32 @@ export enum EButttonSize {
 interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
     theme?: EThemeButton;
+    disabled?: boolean;
     size?: EButttonSize;
     square?: boolean;
 }
 
 export const Button: FC<IProps> = (props) => {
     const {
-        className, size = EButttonSize.M, square = false, children, theme = EThemeButton.NORMAL, ...otherProps
+        className,
+        disabled = false,
+        size = EButttonSize.M,
+        square = false,
+        children,
+        theme = EThemeButton.NORMAL, ...otherProps
     } = props;
+
+    const mods = {
+        [classes.square]: square,
+        [classes.disabled]: disabled,
+    };
 
     return (
         <button
             type="button"
+            disabled={disabled}
             className={
-                classNames(classes.button, { [classes.square]: square }, [className, classes[theme], classes[size]])
+                classNames(classes.button, mods, [className, classes[theme], classes[size]])
             }
             {...otherProps}
         >

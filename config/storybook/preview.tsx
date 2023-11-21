@@ -1,6 +1,8 @@
 import type { Preview } from '@storybook/react';
 import { ETheme } from '../../src/app/providers/ThemeProvider/lib/ThemeContext';
-import { ThemeDecorator, StyleDecorator, BrowserRouterDecorator } from '../../src/shared/config/storybook';
+import {
+    ThemeDecorator, StyleDecorator, BrowserRouterDecorator, StoreDecorator,
+} from '../../src/shared/config/storybook';
 
 const preview: Preview = {
     parameters: {
@@ -22,6 +24,13 @@ const preview: Preview = {
         (Story) => (
             BrowserRouterDecorator(Story)
         ),
+        (Story) => (
+            StoreDecorator({
+                loginForm: { username: '123', password: '123' },
+                user: { authData: { id: '1', username: 'admin' } },
+            })(Story)
+        ),
+
     ],
 };
 

@@ -3,23 +3,23 @@ import 'app/styles/index.scss';
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
 import { ETheme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator';
-import { Navbar } from './Navbar';
+import { LoginForm } from './LoginForm';
 
-const meta: Meta<typeof Navbar> = {
-    title: 'Widgets/Navbar',
-    component: Navbar,
+const meta: Meta<typeof LoginForm> = {
+    title: 'Feature/LoginForm',
+    component: LoginForm,
 };
 
 export default meta;
 
-type Story = StoryObj<typeof Navbar>
+type Story = StoryObj<typeof LoginForm>
 
 export const Primary: Story = {
-    args: {},
+    args: { isOpen: true },
 };
 
 export const PrimaryDark: Story = {
-    args: {},
+    args: { isOpen: true },
     decorators: [
         (story) => ThemeDecorator(ETheme.DARK)(story),
     ],

@@ -77,3 +77,10 @@
 .size_xl {
     font: var(--font-xl);
 }
+
+.disabled {
+    cursor: not-allowed;
+    color: grey;
+    border: 1px solid grey;
+    background-color: rgb(116 116 116 / 27.2%);
+}
