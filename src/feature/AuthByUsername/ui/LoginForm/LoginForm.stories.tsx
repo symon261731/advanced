@@ -3,7 +3,7 @@ import 'app/styles/index.scss';
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
 import { ETheme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator';
-import { LoginForm } from './LoginForm';
+import LoginForm from './LoginForm';
 
 const meta: Meta<typeof LoginForm> = {
     title: 'Feature/LoginForm',

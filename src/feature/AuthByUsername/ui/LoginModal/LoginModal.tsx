@@ -1,5 +1,7 @@
 import { Modal } from 'shared/uikit/Modal/Modal';
-import { LoginForm } from '../LoginForm/LoginForm';
+import { Suspense } from 'react';
+import { Loader } from 'shared/uikit/Loader/Loader';
+import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 
 interface IProps {
     isOpen: boolean;
@@ -12,6 +14,8 @@ export const LoginModal = ({
     isOpen, onClose, className, lazy = false,
 }:IProps) => (
     <Modal isOpen={isOpen} onClose={onClose} className={className} lazy={lazy}>
-        <LoginForm isOpen={isOpen} />
+        <Suspense fallback={<Loader />}>
+            <LoginFormAsync isOpen={isOpen} />
+        </Suspense>
     </Modal>
 );

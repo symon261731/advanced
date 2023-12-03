@@ -9,11 +9,6 @@ interface ILoginByUsernameProps {
     password: string;
 }
 
-enum ELoginErrors {
-    INCORRECT_DATA = '',
-    SERVER_ERROR = ''
-}
-
 export const loginByUsername = createAsyncThunk<IUser, ILoginByUsernameProps, {rejectValue: string}>(
     'login/loginByUsername',
     async (authData, thunkApi) => {
