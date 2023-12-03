@@ -26,11 +26,9 @@ const preview: Preview = {
         ),
         (Story) => (
             StoreDecorator({
-                loginForm: { username: '123', password: '123' },
                 user: { authData: { id: '1', username: 'admin' } },
             })(Story)
         ),
-
     ],
 };
 
