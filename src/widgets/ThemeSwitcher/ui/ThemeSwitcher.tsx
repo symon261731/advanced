@@ -3,13 +3,14 @@ import { ETheme, useTheme } from 'app/providers/ThemeProvider';
 import LightIcon from 'assets/themeLight.svg';
 import DarkIcon from 'assets/themeDark.svg';
 import { Button, EThemeButton } from 'shared/uikit/Button/Button';
+import { memo } from 'react';
 import classes from './ThemeSwitcher.module.scss';
 
 interface IProps {
     className?: string;
 }
 
-export const ThemeSwitcher = ({ className }: IProps) => {
+export const ThemeSwitcher = memo(({ className }: IProps) => {
     const { theme, toggleTheme } = useTheme();
 
     const calcTheme = (theme: ETheme) => (theme === ETheme.LIGHT ? <LightIcon /> : <DarkIcon />);
@@ -24,4 +25,6 @@ export const ThemeSwitcher = ({ className }: IProps) => {
         </Button>
 
     );
-};
+});
+
+ThemeSwitcher.displayName = 'ThemeSwitcher';

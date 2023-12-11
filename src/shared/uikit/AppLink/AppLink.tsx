@@ -1,6 +1,6 @@
 import { Link, LinkProps } from 'react-router-dom';
 import { classNames } from 'shared/helpers/classNames';
-import { FC } from 'react';
+import { memo } from 'react';
 import classes from './AppLink.module.scss';
 
 export enum TAppLinkTheme {
@@ -10,12 +10,12 @@ export enum TAppLinkTheme {
     INVERTED_SECONDARY = 'inverted_secondary'
 }
 
-interface Props extends LinkProps {
+interface IProps extends LinkProps {
     className?: string;
     theme?: TAppLinkTheme;
 }
 
-export const AppLink: FC<Props> = (props) => {
+export const AppLink = memo((props: IProps) => {
     const {
         to,
         className,
@@ -33,4 +33,6 @@ export const AppLink: FC<Props> = (props) => {
             {children}
         </Link>
     );
-};
+});
+
+AppLink.displayName = 'AppLink';

@@ -11,5 +11,14 @@
     "users": [
       {"id": 1, "username" : "admin", "password": "123"}
     ],
-    "profile": { "name": "typicode" }
+    "profile": {
+      "firstName" : "Семен",
+      "lastName" : "Мищенко",
+      "age": 26,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Москва",
+      "username": "admin",
+      "avatar": "http://m.gettywallpapers.com/wp-content/uploads/2023/07/Kyouko-Hori-Profile-Picture.jpg"
+    }
   }

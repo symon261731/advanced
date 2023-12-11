@@ -1,8 +1,9 @@
 import { Button } from 'shared/uikit/Button/Button';
 import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
 import classes from './ErrorPage.module.scss';
 
-const ErrorPage = () => {
+const ErrorPage = memo(() => {
     const { t } = useTranslation();
 
     const reloadPage = () => {
@@ -16,6 +17,8 @@ const ErrorPage = () => {
             <Button onClick={() => reloadPage()}>{t('Обновить страницу')}</Button>
         </div>
     );
-};
+});
+
+ErrorPage.displayName = 'ErrorPage';
 
 export default ErrorPage;

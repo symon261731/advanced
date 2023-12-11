@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/helpers/classNames';
 import { Button, EThemeButton } from 'shared/uikit/Button/Button';
@@ -7,7 +8,7 @@ interface Props {
     short?: boolean;
 }
 
-export const LanguageSwitcher = ({ className, short }: Props) => {
+export const LanguageSwitcher = memo(({ className, short }: Props) => {
     const { i18n, t } = useTranslation();
 
     const changeLanguage = () => {
@@ -23,4 +24,6 @@ export const LanguageSwitcher = ({ className, short }: Props) => {
             {t(short ? 'Короткий язык' : 'Язык')}
         </Button>
     );
-};
+});
+
+LanguageSwitcher.displayName = 'LanguageSwitcher';

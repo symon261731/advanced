@@ -1,5 +1,5 @@
 import { classNames } from 'shared/helpers/classNames';
-import { FC, useCallback, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { Button, EThemeButton } from 'shared/uikit/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,7 +11,7 @@ interface IProps {
     className?: string;
 }
 
-export const Navbar: FC<IProps> = ({ className }) => {
+export const Navbar = memo(({ className }: IProps) => {
     const { t } = useTranslation();
     const [isAuthModal, setisAuthModal] = useState(false);
 
@@ -41,4 +41,6 @@ export const Navbar: FC<IProps> = ({ className }) => {
             {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onToggleModal} lazy />}
         </div>
     );
-};
+});
+
+Navbar.displayName = 'Navbar';

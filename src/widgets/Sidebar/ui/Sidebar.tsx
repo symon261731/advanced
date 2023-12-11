@@ -1,39 +1,25 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { classNames } from 'shared/helpers/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LanguageSwitcher } from 'widgets/LanguageSwitcher/ui/LanguageSwitcher';
 import { Button, EThemeButton } from 'shared/uikit/Button/Button';
-import { AppLink, TAppLinkTheme } from 'shared/uikit/AppLink/AppLink';
-import { useTranslation } from 'react-i18next';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import MainSvg from 'assets/mainPage.svg';
-import AboutSvg from 'assets/aboutPage.svg';
 import classes from './Sidebar.module.scss';
+import { SidebarItemsList } from '../model/items';
+import { SidebarItem } from './SidebarItem/SidebarItem';
 
 interface IProps {
     className?: string;
 }
 
-export const Sidebar = ({ className }: IProps) => {
-    const { t } = useTranslation();
-
+export const Sidebar = memo(({ className }: IProps) => {
     const [isOpen, setIsOpen] = useState(false);
 
-    const toggleHandler = () => {
-        setIsOpen((prev) => !prev);
-    };
+    const toggleHandler = () => setIsOpen((prev) => !prev);
 
     return (
         <div className={classNames(classes.sidebar, { [classes.opened]: isOpen }, [className])} data-testid="sidebar">
             <div className={classes.links}>
-                <AppLink theme={TAppLinkTheme.INVERTED_SECONDARY} to={RoutePath.main}>
-                    <MainSvg />
-                    {isOpen && <span>{t('Главная')}</span>}
-                </AppLink>
-                <AppLink theme={TAppLinkTheme.INVERTED_SECONDARY} to={RoutePath.about}>
-                    <AboutSvg />
-                    {isOpen && <span>{t('О сайте')}</span> }
-                </AppLink>
+                {SidebarItemsList.map((linkInfo) => <SidebarItem item={linkInfo} isOpen={isOpen} />)}
             </div>
             <div className={classes.switches}>
                 <ThemeSwitcher />
@@ -51,4 +37,6 @@ export const Sidebar = ({ className }: IProps) => {
             </Button>
         </div>
     );
-};
+});
+
+Sidebar.displayName = 'Sidebar';
