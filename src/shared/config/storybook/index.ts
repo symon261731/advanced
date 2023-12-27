@@ -1,4 +1,4 @@
-import { BrowserRouterDecorator } from './decorators/BrowserRouter';
+import { BrowserRouterDecorator } from './decorators/BrowserRouterDecorator';
 import { ThemeDecorator } from './decorators/ThemeDecorator';
 import { StyleDecorator } from './decorators/StyleDecorator';
 import { StoreDecorator } from './decorators/StoreDecorator';

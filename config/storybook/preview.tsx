@@ -1,7 +1,9 @@
 import type { Preview } from '@storybook/react';
+import { BrowserRouter } from 'react-router-dom';
+import React from 'react';
 import { ETheme } from '../../src/app/providers/ThemeProvider/lib/ThemeContext';
 import {
-    ThemeDecorator, StyleDecorator, BrowserRouterDecorator, StoreDecorator,
+    ThemeDecorator, StyleDecorator, StoreDecorator,
 } from '../../src/shared/config/storybook';
 
 const preview: Preview = {
@@ -22,12 +24,11 @@ const preview: Preview = {
             ThemeDecorator(ETheme.LIGHT)(Story)
         ),
         (Story) => (
-            BrowserRouterDecorator(Story)
-        ),
-        (Story) => (
-            StoreDecorator({
-                user: { authData: { id: '1', username: 'admin' } },
-            })(Story)
+            <BrowserRouter>
+                {StoreDecorator({
+                    user: { authData: { id: '1', username: 'admin' } },
+                })(Story)}
+            </BrowserRouter>
         ),
     ],
 };

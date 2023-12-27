@@ -11,8 +11,9 @@ export default function App() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(userActions.setAuthData());
+        dispatch(userActions.initAuthData());
     }, [dispatch]);
+
     return (
         <div className={classNames('app', {}, [])}>
             <Suspense fallback="загрузка перевода">

@@ -19,7 +19,7 @@ const initialReducers: TReducerList = { loginForm: loginReducer };
 
 interface IProps {
     className?: string;
-    onSuccess?: ()=>void;
+    onSuccess: ()=>void;
 }
 
 const LoginForm = memo(({ className, onSuccess }:IProps) => {

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ISidebarItem } from '../../model/items';
 
 interface IProps {
-    item?: ISidebarItem
+    item: ISidebarItem
     isOpen?: boolean
 }
 

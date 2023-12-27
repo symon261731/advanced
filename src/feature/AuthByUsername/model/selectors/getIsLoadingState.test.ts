@@ -1,4 +1,3 @@
-import { DeepPartial } from '@reduxjs/toolkit';
 import { IStateSchema } from 'app/providers/StoreProvider';
 import { getIsLoadingState } from './getIsLoadingState';
 
@@ -14,6 +13,6 @@ describe('getIsLoadingState.test', () => {
 
     test('should work with empty state', () => {
         const state: DeepPartial<IStateSchema> = {};
-        expect(getIsLoadingState(state as IStateSchema)).toEqual(undefined);
+        expect(getIsLoadingState(state as IStateSchema)).toEqual(false);
     });
 });

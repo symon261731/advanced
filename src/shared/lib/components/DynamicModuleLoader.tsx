@@ -8,8 +8,6 @@ export type TReducerList = {
     [name in TStateSchemaKey]?: Reducer;
 }
 
-type TReducerListEntry = [TStateSchemaKey, Reducer];
-
 interface IProps {
     children: ReactNode;
     reducers: TReducerList;
@@ -26,15 +24,15 @@ export const DynamicModuleLoader: FC<IProps> = (props:IProps) => {
 
     // eslint-disable-next-line consistent-return
     useEffect(() => {
-        Object.entries(reducers).forEach(([name, reducer]: TReducerListEntry) => {
-            store.reducerManager.add(name, reducer);
+        Object.entries(reducers).forEach(([name, reducer]) => {
+            store.reducerManager.add(name as TStateSchemaKey, reducer);
             dispatch({ type: `@INIT ${name} reducer` });
         });
 
         if (removeAfterUnmount) {
             return () => {
-                Object.entries(reducers).forEach(([name]: TReducerListEntry) => {
-                    store.reducerManager.remove(name);
+                Object.entries(reducers).forEach(([name]) => {
+                    store.reducerManager.remove(name as TStateSchemaKey);
                     dispatch({ type: `@REMOVE ${name} reducer` });
                 });
             };

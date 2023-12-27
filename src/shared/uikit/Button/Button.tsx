@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, memo } from 'react';
-import { classNames } from 'shared/helpers/classNames';
+import { TMods, classNames } from 'shared/helpers/classNames';
 import classes from './Button.module.scss';
 
 export enum EThemeButton {
@@ -35,7 +35,7 @@ export const Button = memo((props: IProps) => {
         theme = EThemeButton.NORMAL, ...otherProps
     } = props;
 
-    const mods = {
+    const mods: TMods = {
         [classes.square]: square,
         [classes.disabled]: disabled,
     };

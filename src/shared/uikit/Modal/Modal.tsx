@@ -1,7 +1,7 @@
 import {
-    MouseEvent, ReactNode, memo, useCallback, useEffect, useRef, useState,
+    MouseEvent, MutableRefObject, ReactNode, memo, useCallback, useEffect, useRef, useState,
 } from 'react';
-import { classNames } from 'shared/helpers/classNames';
+import { TMods, classNames } from 'shared/helpers/classNames';
 import classes from './Modal.module.scss';
 import { Portal } from '../Portal/Portal';
 
@@ -20,7 +20,7 @@ export const Modal = memo(({
 }:IProps) => {
     const [isClosing, setIsClosing] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
-    const timerRef = useRef<ReturnType<typeof setTimeout>>();
+    const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>;
 
     const closeWindow = useCallback(() => {
         if (onClose) {
@@ -42,7 +42,7 @@ export const Modal = memo(({
         e.stopPropagation();
     };
 
-    const mods: Record<string, boolean> = {
+    const mods: TMods = {
         [classes.opened]: isOpen,
         [classes.isClosing]: isClosing,
     };

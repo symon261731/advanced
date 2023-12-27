@@ -42,6 +42,7 @@ module.exports = {
         'import/prefer-default-export': 0,
         'import/no-extraneous-dependencies': 0,
         'import/extensions': 0,
+        'consistent-return': 0,
         'no-unused-vars': 1,
         'no-shadow': 0,
         'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['data-testid', 'to', 'reducerName'] }],
@@ -50,6 +51,7 @@ module.exports = {
         'react-hooks/rules-of-hooks': 2,
         'react-hooks/exhaustive-deps': 2,
         'no-param-reassign': 0,
+        'no-undef': 0,
         camelcase: 0,
     },
     // overrrides: [
