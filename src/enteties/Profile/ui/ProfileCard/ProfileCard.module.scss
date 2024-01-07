@@ -4,15 +4,19 @@
     width: 100%;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    align-items: center;
-}
-
 .data {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.loading .error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+}
+
+.avatarWrapper {
+    text-align: center;
 }

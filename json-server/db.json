@@ -1,24 +1,48 @@
 {
-    "posts": [
-        { "id": 1, "title": "json-server1", "author": "typicode1" },
-        { "id": 2, "title": "json-server2", "author": "typicode2" },
-        { "id": 3, "title": "json-server3", "author": "typicode3" },
-        { "id": 4, "title": "json-server4", "author": "typicode4" }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "users": [
-      {"id": 1, "username" : "admin", "password": "123"}
-    ],
-    "profile": {
-      "firstName" : "Семен",
-      "lastName" : "Мищенко",
-      "age": 26,
-      "currency": "RUB",
-      "country": "Russia",
-      "city": "Москва",
-      "username": "admin",
-      "avatar": "http://m.gettywallpapers.com/wp-content/uploads/2023/07/Kyouko-Hori-Profile-Picture.jpg"
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server1",
+      "author": "typicode1"
+    },
+    {
+      "id": 2,
+      "title": "json-server2",
+      "author": "typicode2"
+    },
+    {
+      "id": 3,
+      "title": "json-server3",
+      "author": "typicode3"
+    },
+    {
+      "id": 4,
+      "title": "json-server4",
+      "author": "typicode4"
     }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "123"
+    }
+  ],
+  "profile": {
+    "firstName": "Семен",
+    "lastName": "Мищенко",
+    "age": 30,
+    "currency": "EUR",
+    "country": "Russia",
+    "city": "Москва",
+    "username": "admin",
+    "avatar": "http://m.gettywallpapers.com/wp-content/uploads/2023/07/Kyouko-Hori-Profile-Picture.jpg"
   }
+}

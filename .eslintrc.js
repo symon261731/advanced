@@ -53,6 +53,7 @@ module.exports = {
         'no-param-reassign': 0,
         'no-undef': 0,
         camelcase: 0,
+        'jsx-a11y/alt-text': 0,
     },
     // overrrides: [
     //     {

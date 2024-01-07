@@ -1,10 +1,10 @@
 import { memo } from 'react';
+import classes from './Loader.module.scss';
 
 export const Loader = memo(() => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+    <svg className={classes.loader} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
         <circle
-            fill="#FF156D"
-            stroke="#FF156D"
+            className={classes.circle}
             strokeWidth="15"
             r="15"
             cx="40"
@@ -22,8 +22,7 @@ export const Loader = memo(() => (
 
         </circle>
         <circle
-            fill="#FF156D"
-            stroke="#FF156D"
+            className={classes.circle}
             strokeWidth="15"
             r="15"
             cx="100"
@@ -40,8 +39,7 @@ export const Loader = memo(() => (
             />
         </circle>
         <circle
-            fill="#FF156D"
-            stroke="#FF156D"
+            className={classes.circle}
             strokeWidth="15"
             r="15"
             cx="160"

@@ -23,12 +23,18 @@
     color: var(--inverted-primary-color);
 }
 
-.outline {
+.outline,
+.outline_red {
     padding: 10px 15px;
     border: 1px solid var(--primary-color);
     border-radius: 5px;
     color: var(--primary-color);
     background: none;
+}
+
+.outline_red {
+    color: var(--red-color);
+    border: 1px solid var(--red-color);
 }
 
 .background,

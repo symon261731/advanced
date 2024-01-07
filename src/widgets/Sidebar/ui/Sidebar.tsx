@@ -19,7 +19,15 @@ export const Sidebar = memo(({ className }: IProps) => {
     return (
         <div className={classNames(classes.sidebar, { [classes.opened]: isOpen }, [className])} data-testid="sidebar">
             <div className={classes.links}>
-                {SidebarItemsList.map((linkInfo) => <SidebarItem key={linkInfo.path} item={linkInfo} isOpen={isOpen} />)}
+                {
+                    SidebarItemsList.map((linkInfo) => (
+                        <SidebarItem
+                            key={linkInfo.path}
+                            item={linkInfo}
+                            isOpen={isOpen}
+                        />
+                    ))
+                }
             </div>
             <div className={classes.switches}>
                 <ThemeSwitcher />
