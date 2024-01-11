@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { Select } from 'shared/uikit/Select/Select';
+import { useTranslation } from 'react-i18next';
 import { ECountry } from '../model/types/country';
 
 const options = [
@@ -17,13 +18,20 @@ interface IProps {
 
 export const CountrySelect = memo((props:IProps) => {
     const { value, onChange, readonly } = props;
+    const { t } = useTranslation();
 
     const onChangeHandler = (newValue: string) => {
         onChange?.(newValue as ECountry);
     };
 
     return (
-        <Select options={options} readonly={readonly} value={value} onChange={(newValue) => onChangeHandler(newValue)} />
+        <Select
+            label={t('Укажите страну')}
+            options={options}
+            readonly={readonly}
+            value={value}
+            onChange={(newValue) => onChangeHandler(newValue)}
+        />
     );
 });
 

@@ -14,11 +14,10 @@ interface IProps {
 
 export const ProfilePageHeader = memo((props:IProps) => {
     const { className } = props;
+    const { t } = useTranslation('profile');
 
     const readonly = useSelector(getProfileReadonly);
     const dispatch = useAppDispatch();
-
-    const { t } = useTranslation();
 
     const onEditHandler = useCallback(() => {
         dispatch(profileActions.setReadonly(false));
@@ -30,7 +29,6 @@ export const ProfilePageHeader = memo((props:IProps) => {
 
     const onSaveHandler = useCallback(() => {
         dispatch(updateProfileData());
-        dispatch(profileActions.setReadonly(true));
     }, [dispatch]);
 
     return (

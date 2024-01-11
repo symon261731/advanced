@@ -10,10 +10,15 @@ import {
     profileActions,
     getProfileReadonly,
     getProfileForm,
+    getProfileValidationErrors,
 } from 'enteties/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { ECurrency } from 'enteties/Currency';
+import { EThemeText, Text } from 'shared/uikit/Text/Text';
+import { ECountry } from 'enteties/Country';
+import { EValidationError } from 'enteties/Profile/model/types/profile';
+import { useTranslation } from 'react-i18next';
 import classes from './ProfilePage.module.scss';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
@@ -27,12 +32,14 @@ interface IProps {
 
 const ProfilePage = (props:IProps) => {
     const { className } = props;
+    const { t } = useTranslation('profile');
 
     const dispatch = useAppDispatch();
     const formData = useSelector(getProfileForm);
     const readonly = useSelector(getProfileReadonly);
     const isLoading = useSelector(getIsProfileIsLoading);
     const error = useSelector(getProfileError);
+    const validationErrors = useSelector(getProfileValidationErrors);
 
     const onChangeFirstName = useCallback((value: string) => {
         dispatch(profileActions.updateProfile({ firstName: value || '' }));
@@ -62,9 +69,18 @@ const ProfilePage = (props:IProps) => {
         dispatch(profileActions.updateProfile({ currency: value }));
     }, [dispatch]);
 
-    // const onChangeCountry = useCallback(() => {
+    const onChangeCountry = useCallback((value: ECountry) => {
+        dispatch(profileActions.updateProfile({ country: value }));
+    }, [dispatch]);
 
-    // }, [dispatch]);
+    const validateErrorsTranslates = {
+        [EValidationError.INCORRECT_AGE]: t('Некорректный возраст'),
+        [EValidationError.INCORRECT_COUNTRY]: t('Некорректная страна'),
+        [EValidationError.INCORRECT_USER_DATA]: t('Имя и фамилия обязательно'),
+        [EValidationError.NO_DATA]: t('Данные не указаны'),
+        [EValidationError.SERVER_ERROR]: t('Ошибка сервера'),
+
+    };
 
     useEffect(() => {
         dispatch(fetchProfileData());
@@ -74,6 +90,9 @@ const ProfilePage = (props:IProps) => {
         <DynamicModuleLoader removeAfterUnmount reducers={reducers}>
             <div className={classNames(classes.ProfilePage, {}, [className])}>
                 <ProfilePageHeader />
+                {validationErrors?.length
+                    ? validationErrors.map((err) => <Text key={err} theme={EThemeText.ERROR} text={validateErrorsTranslates[err]} />)
+                    : null}
                 <ProfileCard
                     readonly={readonly}
                     data={formData}
@@ -86,6 +105,7 @@ const ProfilePage = (props:IProps) => {
                     onChangeAvatar={onChangeAvatar}
                     onChangeUsername={onChangeUsername}
                     onChangeCurrency={onChangeCurrency}
+                    onChangeCountry={onChangeCountry}
                 />
             </div>
         </DynamicModuleLoader>

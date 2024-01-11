@@ -1,0 +1,13 @@
+{
+    "Произошла ошибка при загрузке профиля": "There was an error loading your profile",
+    "Попробуйте обновить страницу": "Try to reload page",
+    "Профиль пользователя": "User profile",
+    "Сохранить": "Save",
+    "Отменить": "Cancel",
+    "Редактировать": "Edit",
+    "Некорректный возраст": "Incorrect age",
+    "Некорректная страна": "Incorrect country",
+    "Имя и фамилия обязательно": "firstname and secondname required",
+    "Данные не указаны": "Data not provided",
+    "Ошибка сервера": "Server error"
+}

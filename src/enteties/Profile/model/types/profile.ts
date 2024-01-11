@@ -1,6 +1,14 @@
 import { ECountry } from 'enteties/Country';
 import { ECurrency } from 'enteties/Currency';
 
+export enum EValidationError {
+    INCORRECT_USER_DATA = 'INCORRECT_USER_DATA',
+    INCORRECT_AGE = 'INCORRECT_AGE',
+    INCORRECT_COUNTRY = 'INCORRECT_COUNTRY',
+    NO_DATA = 'NO_DATA',
+    SERVER_ERROR = 'SERVER_ERROR',
+}
+
 export interface IProfile {
     firstName? : string;
     lastName? : string;
@@ -18,4 +26,5 @@ export interface IProfileSchema {
     isLoading: boolean;
     error?: string;
     readonly: boolean
+    validateError?: EValidationError[];
 }

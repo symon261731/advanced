@@ -42,7 +42,7 @@ export const ProfileCard = memo((props:IProps) => {
         onChangeCurrency,
         onChangeCountry,
     } = props;
-    const { t } = useTranslation();
+    const { t } = useTranslation('profile');
 
     if (isLoading) {
         return (
