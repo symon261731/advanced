@@ -4,10 +4,11 @@ import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData'
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 
 const initialState: IProfileSchema = {
-    isLoading: false,
-    readonly: true,
-    error: undefined,
     data: undefined,
+    form: undefined,
+    isLoading: false,
+    error: undefined,
+    readonly: true,
 };
 
 export const profileSlice = createSlice({
@@ -23,7 +24,7 @@ export const profileSlice = createSlice({
             state.form = state.data;
         },
         updateProfile: (state, action: PayloadAction<IProfile>) => {
-            state.validateError = [];
+            state.validateError = undefined;
             state.form = {
                 ...state.form,
                 ...action.payload,
@@ -44,8 +45,10 @@ export const profileSlice = createSlice({
                 state.isLoading = false;
                 state.data = action.payload;
                 state.form = action.payload;
+                state.validateError = undefined;
             })
             .addCase(updateProfileData.pending, (state) => {
+                state.validateError = undefined;
                 state.error = undefined;
                 state.isLoading = true;
             })

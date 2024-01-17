@@ -1,6 +1,6 @@
 export enum ECountry {
-    Russia = 'Russia',
-    Belarus = 'Belarus',
-    Kazakhstan = 'Kazakhstan',
-    Armenia = 'Armenia'
+    Russia = 'Россия',
+    Belarus = 'Беларусь',
+    Kazakhstan = 'Казахстан',
+    Armenia = 'Армения'
 }

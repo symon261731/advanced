@@ -7,7 +7,10 @@ import { BuildOptions } from './types/config';
 
 export function buildWebpackConfig(options: BuildOptions): webpack.Configuration {
     const {
-        mode, paths, isDev, apiUrl,
+        mode,
+        paths,
+        isDev,
+        apiUrl,
     } = options;
 
     return {
@@ -34,6 +37,6 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         },
 
         // плагины
-        plugins: buildPlugins(paths.pathToHtml, isDev, apiUrl),
+        plugins: buildPlugins(paths.pathToHtml, isDev, apiUrl, options.project),
     };
 }

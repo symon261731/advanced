@@ -60,15 +60,6 @@ export default ({ config }: {config: webpack.Configuration}) => {
         ],
     };
 
-    const fileLoader = {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-            {
-                loader: 'file-loader',
-            },
-        ],
-    };
-
     // eslint-disable-next-line no-param-reassign
     config!.module!.rules = [
         ...config!.module!.rules!.map((rule) => {
@@ -92,12 +83,12 @@ export default ({ config }: {config: webpack.Configuration}) => {
         babelLoader,
         tsLoader,
         scssLoader,
-        fileLoader,
     );
 
     config.plugins?.push(new DefinePlugin({
         __IS_DEV__: true,
         __API__: JSON.stringify(''),
+        __PROJECT__: JSON.stringify('storybook'),
     }));
 
     return config;
