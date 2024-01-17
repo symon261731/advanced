@@ -1,35 +1,37 @@
 /* eslint-disable max-len */
-import { getUserData } from 'enteties/User';
-import { Suspense, memo, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
+import {
+    Suspense, memo, useCallback, useMemo,
+} from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { routeConfig } from 'shared/config/routeConfig/routeConfig';
+import { AppRoutesProps, routeConfig } from 'shared/config/routeConfig/routeConfig';
+import { Loader } from 'shared/uikit/Loader/Loader';
+import { RequireAuth } from './RequireAuth';
 
 export const AppRouter = memo(() => {
-    const { t } = useTranslation();
+    const renderWithWrapper = useCallback((route: AppRoutesProps) => {
+        const element = (
+            <Suspense fallback={(
+                <Loader />
+            )}
+            >
+                {route.element}
+            </Suspense>
+        );
 
-    const isAuth = useSelector(getUserData);
-
-    const routes = useMemo(() => Object.values(routeConfig).filter((route) => {
-        if (route.authOnly && !isAuth) {
-            return false;
-        }
-
-        return true;
-    }), [isAuth]);
+        return (
+            <Route
+                key={route.path}
+                path={route.path}
+                element={(route.authOnly ? <RequireAuth>{element}</RequireAuth> : element)}
+            />
+        );
+    }, []);
 
     return (
-        <Suspense fallback={(
-            <span>
-                {t('page loading')}
-            </span>
-        )}
-        >
-            <Routes>
-                {routes.map(({ path, element }) => (<Route key={path} path={path} element={<div className="page-wrapper">{element}</div>} />))}
-            </Routes>
-        </Suspense>
+
+        <Routes>
+            {Object.values(routeConfig).map(renderWithWrapper)}
+        </Routes>
     );
 });
 
