@@ -21,7 +21,7 @@ export const ThemeSwitcher = memo(({ className }: IProps) => {
             className={classNames(classes.themeswitcher, {}, [className])}
             onClick={toggleTheme}
         >
-            { calcTheme(theme)}
+            {calcTheme(theme)}
         </Button>
 
     );

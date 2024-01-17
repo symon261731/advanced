@@ -13,7 +13,7 @@ const ThemeProvider: FC<IProps> = ({ children, initialTheme }) => {
 
     const defaultProps = useMemo(() => ({
         theme,
-        setTheme: () => setTheme(theme === ETheme.LIGHT ? ETheme.DARK : ETheme.LIGHT),
+        setTheme,
     }), [theme]);
 
     return (
