@@ -11,7 +11,9 @@ export const AppRouter = memo(() => {
     const renderWithWrapper = useCallback((route: AppRoutesProps) => {
         const element = (
             <Suspense fallback={(
-                <Loader />
+                <div style={{ textAlign: 'center' }}>
+                    <Loader />
+                </div>
             )}
             >
                 {route.element}

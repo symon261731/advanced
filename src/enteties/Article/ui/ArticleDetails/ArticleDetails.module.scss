@@ -1,0 +1,38 @@
+.ArticleDetails {
+    min-height: 100%;
+}
+
+.loadingSkeleton {
+    margin: 0 auto;
+}
+
+.avatar {
+    margin: 0 auto 25px;
+}
+
+.title {
+    margin-bottom: 4px;
+}
+
+.description {
+    margin-bottom: 6px;
+}
+
+.block {
+    margin-top: 15px;
+}
+
+.content {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.shortInfo {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+}
+
+.icon {
+    fill: var(--secondary-color);
+}

@@ -1,7 +1,7 @@
 .sidebar {
     width: 80px;
     padding-top: 20px;
-    min-height: calc(100vh - var(--navbar-height));
+    height: calc(100vh - var(--navbar-height));
     background-color: var(--inverted-bg-color);
     display: flex;
     flex-direction: column;
@@ -29,6 +29,7 @@
 
 .togglebutton {
     position: absolute;
+    z-index: 10;
     border: none;
     right: -20px;
     bottom: 10px;

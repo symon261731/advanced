@@ -7,6 +7,12 @@ export enum EThemeText {
     ERROR = 'error'
 }
 
+export enum ETextSize {
+    M = 'size_m',
+    L = 'size_l',
+    XL = 'size_xl'
+}
+
 export enum ETextAlign {
     LEFT = 'left',
     CENTER = 'center',
@@ -19,11 +25,17 @@ interface IProps {
     text?: string;
     align?: ETextAlign;
     theme?: EThemeText;
+    size?: ETextSize;
 }
 
 export const Text = memo((props:IProps) => {
     const {
-        className, title, text, theme, align = ETextAlign.LEFT,
+        className,
+        title,
+        text,
+        theme,
+        align = ETextAlign.LEFT,
+        size = ETextSize.M,
     } = props;
 
     const mods = {
@@ -31,9 +43,9 @@ export const Text = memo((props:IProps) => {
     };
 
     return (
-        <div className={classNames(classes.Text, {}, [className])}>
-            <p className={classNames(classes.title, mods, [classes[align]])}>{title}</p>
-            <p className={classNames(classes.text, mods, [classes[align]])}>{text}</p>
+        <div className={classNames(classes.Text, {}, [className, classes[align], classes[size]])}>
+            {title && <p className={classNames(classes.title, mods, [])}>{title}</p>}
+            {text && <p className={classNames(classes.text, mods, [])}>{text}</p>}
         </div>
     );
 });
