@@ -19,6 +19,7 @@ import { EThemeText, Text } from 'shared/uikit/Text/Text';
 import { ECountry } from 'enteties/Country';
 import { EValidationError } from 'enteties/Profile/model/types/profile';
 import { useTranslation } from 'react-i18next';
+import { useInitialEffect } from 'shared/lib/hooks/useAppDispatch/useInitialEffect';
 import classes from './ProfilePage.module.scss';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
@@ -82,11 +83,9 @@ const ProfilePage = (props:IProps) => {
 
     };
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
-        }
-    }, [dispatch]);
+    useInitialEffect(() => {
+        dispatch(fetchProfileData());
+    });
 
     return (
         <DynamicModuleLoader removeAfterUnmount reducers={reducers}>

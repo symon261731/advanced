@@ -25,7 +25,14 @@
     {
       "id": 1,
       "username": "admin",
-      "password": "123"
+      "password": "123",
+      "avatar": "https://staticg.sportskeeda.com/editor/2023/08/3626c-16921875120044-1920.jpg"
+    },
+    {
+      "id": 2,
+      "username": "anotherUser",
+      "password": "456",
+      "avatar": "https://avatars.dzeninfra.ru/get-zen_doc/52326/pub_5fc3964ab545e63488cff5a1_5fc39685d57ee92752259a4a/scale_2400"
     }
   ],
   "articles": [

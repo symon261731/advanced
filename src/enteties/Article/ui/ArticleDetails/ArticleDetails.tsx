@@ -15,6 +15,7 @@ import { Avatar } from 'shared/uikit/Avatar/Avatar';
 import EyeSvg from 'assets/eye.svg';
 import CalendarSvg from 'assets/calendar.svg';
 import { Icon } from 'shared/uikit/Icon/Icon';
+import { useInitialEffect } from 'shared/lib/hooks/useAppDispatch/useInitialEffect';
 import { EArticleBlockType, TArticleBlock } from '../../model/types/article';
 import { getArticleDetailsData, getArticleDetailsError, getArticleDetailsIsLoading } from '../../model/selectors/getArticleDetailsData';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
@@ -54,11 +55,9 @@ export const ArticleDetails = memo((props:IProps) => {
         }
     }, []);
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchArticleById(id));
-        }
-    }, [dispatch, id]);
+    useInitialEffect(() => {
+        dispatch(fetchArticleById(id));
+    });
 
     let content: ReactNode;
 
