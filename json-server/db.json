@@ -23,16 +23,16 @@
   ],
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "username": "admin",
       "password": "123",
       "avatar": "https://staticg.sportskeeda.com/editor/2023/08/3626c-16921875120044-1920.jpg"
     },
     {
-      "id": 2,
+      "id": "2",
       "username": "anotherUser",
       "password": "456",
-      "avatar": "https://avatars.dzeninfra.ru/get-zen_doc/52326/pub_5fc3964ab545e63488cff5a1_5fc39685d57ee92752259a4a/scale_2400"
+      "avatar": "https://cdn.myanimelist.net/images/characters/8/372351.jpg"
     }
   ],
   "articles": [
@@ -43,7 +43,9 @@
       "views": 1022,
       "img": "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
       "createAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -124,16 +126,66 @@
       "text": "some comment 3",
       "articleId": "1",
       "userId": "1"
+    },
+    {
+      "articleId": 1,
+      "userId": 2,
+      "text": "SecondUser",
+      "id": "nX0wKds"
+    },
+    {
+      "articleId": 1,
+      "userId": 1,
+      "text": "secondMessegaFromAnotherUser",
+      "id": "7OPFOK2"
+    },
+    {
+      "articleId": 1,
+      "userId": 1,
+      "text": "thirdMessage",
+      "id": "IOqHNzy"
+    },
+    {
+      "articleId": 1,
+      "userId": 1,
+      "text": "12312",
+      "id": "upUY6Vr"
+    },
+    {
+      "articleId": 1,
+      "userId": 1,
+      "text": "fsdfsdf",
+      "id": "_HWZUni"
+    },
+    {
+      "articleId": 1,
+      "userId": 2,
+      "text": "хе хе хе",
+      "id": "A2N8eyB"
     }
   ],
-  "profile": {
-    "firstName": "Кеко",
-    "lastName": "Хори",
-    "age": 16,
-    "currency": "EUR",
-    "country": "Россия",
-    "city": "Токио",
-    "username": "admin",
-    "avatar": "http://m.gettywallpapers.com/wp-content/uploads/2023/07/Kyouko-Hori-Profile-Picture.jpg"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "firstName": "Кеко",
+      "lastName": "Хори",
+      "age": 16,
+      "currency": "EUR",
+      "country": "Россия",
+      "city": "Токио",
+      "username": "admin",
+      "avatar": "http://m.gettywallpapers.com/wp-content/uploads/2023/07/Kyouko-Hori-Profile-Picture.jpg"
+    },
+    {
+      "id": "2",
+      "firstName": "юджи",
+      "lastName": "итадори",
+      "age": 26,
+      "currency": "RUB",
+      "country": "Армения",
+      "city": "Москва",
+      "username": "anotherUser",
+      "avatar": "https://cdn.myanimelist.net/images/characters/8/372351.jpg"
+    }
+  ]
 }

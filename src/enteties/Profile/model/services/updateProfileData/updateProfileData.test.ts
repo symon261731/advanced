@@ -5,6 +5,7 @@ import { updateProfileData } from './updateProfileData';
 import { EValidationError } from '../../types/profile';
 
 const data = {
+    id: '1',
     firstName: 'test',
     lastName: 'test2',
     username: 'testUser',
@@ -16,6 +17,7 @@ const data = {
 };
 
 const wrongValidateData = {
+    id: '1',
     firstName: '',
     lastName: '',
     username: 'testUser',

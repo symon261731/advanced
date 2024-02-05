@@ -20,6 +20,7 @@ import { ECountry } from 'enteties/Country';
 import { EValidationError } from 'enteties/Profile/model/types/profile';
 import { useTranslation } from 'react-i18next';
 import { useInitialEffect } from 'shared/lib/hooks/useAppDispatch/useInitialEffect';
+import { useParams } from 'react-router-dom';
 import classes from './ProfilePage.module.scss';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
@@ -41,6 +42,7 @@ const ProfilePage = (props:IProps) => {
     const isLoading = useSelector(getIsProfileIsLoading);
     const error = useSelector(getProfileError);
     const validationErrors = useSelector(getProfileValidationErrors);
+    const { id } = useParams<{id: string}>();
 
     const onChangeFirstName = useCallback((value: string) => {
         dispatch(profileActions.updateProfile({ firstName: value || '' }));
@@ -84,7 +86,7 @@ const ProfilePage = (props:IProps) => {
     };
 
     useInitialEffect(() => {
-        dispatch(fetchProfileData());
+        dispatch(fetchProfileData(id));
     });
 
     return (

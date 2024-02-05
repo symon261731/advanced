@@ -25,7 +25,6 @@ export const loginByUsername = createAsyncThunk<IUser, ILoginByUsernameProps, IT
             localStorage.setItem(USER_LOCAlSTORAGE_KEY, JSON.stringify(response.data));
             return response.data;
         } catch (e) {
-            console.log(e);
             return rejectWithValue('error');
         }
     },

@@ -10,6 +10,7 @@ export enum EValidationError {
 }
 
 export interface IProfile {
+    id?: string;
     firstName? : string;
     lastName? : string;
     age?: number;

@@ -16,7 +16,7 @@ interface IProps {
 
 export const DynamicModuleLoader: FC<IProps> = (props:IProps) => {
     const {
-        children, reducers, removeAfterUnmount,
+        children, reducers, removeAfterUnmount = true,
     } = props;
     const dispatch = useDispatch();
 

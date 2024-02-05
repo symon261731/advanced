@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import { IStateSchema } from 'app/providers/StoreProvider';
-import { getArticleDetailsData, getArticleDetailsError, getArticleDetailsIsLoading } from './getArticleDetailsData';
+import { getArticleDetailsData } from './getArticleDetailsData';
 import { IArticle, EArticleType, EArticleBlockType } from '../types/article';
 
 const exampleData: IArticle = {
