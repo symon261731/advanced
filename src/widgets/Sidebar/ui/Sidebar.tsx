@@ -3,9 +3,10 @@ import { classNames } from 'shared/helpers/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LanguageSwitcher } from 'widgets/LanguageSwitcher/ui/LanguageSwitcher';
 import { Button, EThemeButton } from 'shared/uikit/Button/Button';
+import { useSelector } from 'react-redux';
 import classes from './Sidebar.module.scss';
-import { SidebarItemsList } from '../model/items';
 import { SidebarItem } from './SidebarItem/SidebarItem';
+import { getSidebarItems } from '../model/selectors/getSidebarItems';
 
 interface IProps {
     className?: string;
@@ -14,13 +15,14 @@ interface IProps {
 export const Sidebar = memo(({ className }: IProps) => {
     const [isOpen, setIsOpen] = useState(false);
 
+    const sidebarItemsList = useSelector(getSidebarItems);
     const toggleHandler = () => setIsOpen((prev) => !prev);
 
     return (
         <div className={classNames(classes.sidebar, { [classes.opened]: isOpen }, [className])} data-testid="sidebar">
             <div className={classes.links}>
                 {
-                    SidebarItemsList.map((linkInfo) => (
+                    sidebarItemsList.map((linkInfo) => (
                         <SidebarItem
                             key={linkInfo.path}
                             item={linkInfo}

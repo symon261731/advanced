@@ -3,7 +3,7 @@ import { AppLink, TAppLinkTheme } from 'shared/uikit/AppLink/AppLink';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { getUserData } from 'enteties/User';
-import { ISidebarItem } from '../../model/items';
+import { ISidebarItem } from '../../model/types/sidebar';
 
 interface IProps {
     item: ISidebarItem
