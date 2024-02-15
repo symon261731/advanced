@@ -9,6 +9,7 @@ import { Button } from 'shared/uikit/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { ArticleListItemSkeleton } from 'enteties/Article/ui/ArticleListItem/ArticleListItemSkeleton';
+import { useTranslation } from 'react-i18next';
 import classes from './ArticleListItem.module.scss';
 import {
     EArticleBlockType, EArticleView, IArticle, IArticleTextBlock,
@@ -24,6 +25,7 @@ interface IProps {
 export const ArticleListItem = memo(({
     className, article, view,
 }: IProps) => {
+    const { t } = useTranslation('article');
     const navigate = useNavigate();
 
     const onClickButton = useCallback(() => {
@@ -57,7 +59,7 @@ export const ArticleListItem = memo(({
                         <ArticleTextBlockComponent block={textBlock} className={classes.textBlock} />
                     )}
                     <div className={classes.footer}>
-                        <Button onClick={onClickButton}>Читать далее...</Button>
+                        <Button onClick={onClickButton}>{`${t('Читать далее')}...`}</Button>
                         {views}
                     </div>
                 </Card>
