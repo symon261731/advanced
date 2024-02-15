@@ -19,7 +19,7 @@ import { EThemeText, Text } from 'shared/uikit/Text/Text';
 import { ECountry } from 'enteties/Country';
 import { EValidationError } from 'enteties/Profile/model/types/profile';
 import { useTranslation } from 'react-i18next';
-import { useInitialEffect } from 'shared/lib/hooks/useAppDispatch/useInitialEffect';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useParams } from 'react-router-dom';
 import classes from './ProfilePage.module.scss';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';

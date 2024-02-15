@@ -43,9 +43,9 @@ export const Text = memo((props:IProps) => {
     };
 
     return (
-        <div className={classNames(classes.Text, {}, [className, classes[align], classes[size]])}>
-            {title && <p className={classNames(classes.title, mods, [])}>{title}</p>}
-            {text && <p className={classNames(classes.text, mods, [])}>{text}</p>}
+        <div className={classNames(classes.Text, {}, [classes[align], classes[size]])}>
+            {title && <p className={classNames(classes.title, mods, [className])}>{title}</p>}
+            {text && <p className={classNames(classes.text, mods, [className])}>{text}</p>}
         </div>
     );
 });

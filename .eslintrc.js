@@ -55,6 +55,7 @@ module.exports = {
         'no-undef': 0,
         camelcase: 0,
         'jsx-a11y/alt-text': 0,
+        'react/no-array-index-key': 1,
     },
     // overrrides: [
     //     {

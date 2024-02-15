@@ -2,13 +2,15 @@ import { ArticleDetails } from 'enteties/Article';
 import { CommentList } from 'enteties/Comment';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { ETextSize, EThemeText, Text } from 'shared/uikit/Text/Text';
 import { DynamicModuleLoader, TReducerList } from 'shared/lib/components/DynamicModuleLoader';
 import { useSelector } from 'react-redux';
-import { useInitialEffect } from 'shared/lib/hooks/useAppDispatch/useInitialEffect';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { AddCommentForm } from 'feature/AddNewComment';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { Button } from 'shared/uikit/Button/Button';
 import { addCommentForActicle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slice/ArticleDetailsCommentsSlice';
 import { getArticleCommentsIsLoading, getArticleCommentsError } from '../../model/selectors/comments';
@@ -22,6 +24,7 @@ const reducers: TReducerList = {
 const ArticleDetailsPage = memo(() => {
     const { t } = useTranslation('article');
     const { id } = useParams<{id: string}>();
+    const navigate = useNavigate();
 
     const dispatch = useAppDispatch();
     const comments = useSelector(getArticleComments.selectAll);
@@ -31,6 +34,10 @@ const ArticleDetailsPage = memo(() => {
     const onSendComment = useCallback((text: string) => {
         dispatch(addCommentForActicle(text));
     }, [dispatch]);
+
+    const returnToArticleList = useCallback(() => {
+        navigate(RoutePath.articles);
+    }, [navigate]);
 
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
@@ -46,6 +53,7 @@ const ArticleDetailsPage = memo(() => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+            <Button onClick={returnToArticleList}>{t('<Вернуться')}</Button>
             <div>
                 <ArticleDetails id={id} />
                 <Text className={classes.commentBlockTitle} title={t('Комментарии')} size={ETextSize.L} />

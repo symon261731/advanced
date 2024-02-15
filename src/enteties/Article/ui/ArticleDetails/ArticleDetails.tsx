@@ -15,7 +15,7 @@ import { Avatar } from 'shared/uikit/Avatar/Avatar';
 import EyeSvg from 'assets/eye.svg';
 import CalendarSvg from 'assets/calendar.svg';
 import { Icon } from 'shared/uikit/Icon/Icon';
-import { useInitialEffect } from 'shared/lib/hooks/useAppDispatch/useInitialEffect';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { EArticleBlockType, TArticleBlock } from '../../model/types/article';
 import { getArticleDetailsData, getArticleDetailsError, getArticleDetailsIsLoading } from '../../model/selectors/getArticleDetailsData';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';

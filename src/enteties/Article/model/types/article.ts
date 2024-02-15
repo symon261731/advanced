@@ -1,9 +1,15 @@
+import { IUser } from 'enteties/User';
+
 export enum EArticleBlockType {
     CODE = 'CODE',
     IMAGE = 'IMAGE',
     TEXT = 'TEXT'
 }
 
+export enum EArticleView {
+    BIG = 'BIG',
+    SMALL = 'SMALL'
+}
 export interface IArticleBlockBase {
     id: string;
     type: EArticleBlockType;
@@ -41,6 +47,7 @@ export interface IArticle {
     img: string,
     views: number,
     createAt: string,
+    user: IUser,
     type: string[],
     blocks: TArticleBlock[],
 }

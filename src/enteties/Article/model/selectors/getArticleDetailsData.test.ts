@@ -10,6 +10,10 @@ const exampleData: IArticle = {
     views: 1022,
     img: 'https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png',
     createAt: '26.02.2022',
+    user: {
+        username: 'test',
+        id: '1',
+    },
     type: [EArticleType.IT],
     blocks: [
         {
