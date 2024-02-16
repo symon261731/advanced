@@ -25,6 +25,7 @@ const ArticlesPage = memo(() => {
     };
 
     useInitialEffect(() => {
+        dispatch(articlePageActions.initState());
         dispatch(fetchArticles());
     });
 
