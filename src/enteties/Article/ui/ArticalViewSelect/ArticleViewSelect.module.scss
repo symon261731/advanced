@@ -1,0 +1,12 @@
+.option {
+    fill: var(--primary-color);
+    opacity: 0.4;
+
+    &:not(&:last-child) {
+        margin-right: 2px;
+    }
+}
+
+.isCurrent {
+    opacity: 1;
+}
