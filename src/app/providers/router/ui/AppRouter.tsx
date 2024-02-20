@@ -12,7 +12,10 @@ export const AppRouter = memo(() => {
             <Suspense fallback={(
                 <PageWrapper>
                     <div style={{
-                        height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        height: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
                     }}
                     >
                         <Loader />
