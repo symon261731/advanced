@@ -21,6 +21,7 @@ import { EValidationError } from 'enteties/Profile/model/types/profile';
 import { useTranslation } from 'react-i18next';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useParams } from 'react-router-dom';
+import { PageWrapper } from 'shared/uikit/PageWrapper/PageWrapper';
 import classes from './ProfilePage.module.scss';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
@@ -91,7 +92,7 @@ const ProfilePage = (props:IProps) => {
 
     return (
         <DynamicModuleLoader removeAfterUnmount reducers={reducers}>
-            <div className={classNames(classes.ProfilePage, {}, [className])}>
+            <PageWrapper className={classNames(classes.ProfilePage, {}, [className])}>
                 <ProfilePageHeader />
                 {validationErrors?.length
                     ? validationErrors.map((err) => <Text key={err} theme={EThemeText.ERROR} text={validateErrorsTranslates[err]} />)
@@ -110,8 +111,9 @@ const ProfilePage = (props:IProps) => {
                     onChangeCurrency={onChangeCurrency}
                     onChangeCountry={onChangeCountry}
                 />
-            </div>
+            </PageWrapper>
         </DynamicModuleLoader>
+
     );
 };
 

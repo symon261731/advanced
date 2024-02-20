@@ -19,7 +19,7 @@ export const Sidebar = memo(({ className }: IProps) => {
     const toggleHandler = () => setIsOpen((prev) => !prev);
 
     return (
-        <div className={classNames(classes.sidebar, { [classes.opened]: isOpen }, [className])} data-testid="sidebar">
+        <menu className={classNames(classes.sidebar, { [classes.opened]: isOpen }, [className])} data-testid="sidebar">
             <div className={classes.links}>
                 {
                     sidebarItemsList.map((linkInfo) => (
@@ -45,7 +45,7 @@ export const Sidebar = memo(({ className }: IProps) => {
             >
                 {isOpen ? '<' : '>'}
             </Button>
-        </div>
+        </menu>
     );
 });
 

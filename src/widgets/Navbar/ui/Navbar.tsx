@@ -36,10 +36,10 @@ export const Navbar = memo(({ className }: IProps) => {
     }
 
     return (
-        <div className={classNames(classes.navbar, {}, [className])}>
+        <header className={classNames(classes.navbar, {}, [className])}>
             <Button onClick={onToggleModal} theme={EThemeButton.CLEAR_INVERTED}>{t('Войти')}</Button>
             {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onToggleModal} lazy />}
-        </div>
+        </header>
     );
 });
 

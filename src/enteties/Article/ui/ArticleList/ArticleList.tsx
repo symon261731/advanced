@@ -18,18 +18,16 @@ interface IProps {
 export const ArticleList = ({
     className, articles, isLoading, view,
 } : IProps) => {
-    if (isLoading) {
-        return (
-            <div className={classNames('', {}, [className, classes[view]])}>
-                {getSkeleton(view)}
-            </div>
-        );
-    }
     const renderArticle = (article: IArticle) => <ArticleListItem key={article.id} article={article} view={view} />;
 
     return (
         <div className={classNames('', {}, [className, classes[view]])}>
             {articles?.length > 0 ? articles?.map((article) => renderArticle(article)) : null}
+            {isLoading && (
+                <div className={classNames('', {}, [className, classes[view]])}>
+                    {getSkeleton(view)}
+                </div>
+            )}
         </div>
     );
 };

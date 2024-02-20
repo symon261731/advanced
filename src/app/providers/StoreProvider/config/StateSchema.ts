@@ -9,7 +9,7 @@ import { IAddCommentFormSchema } from 'feature/AddNewComment';
 import { ILoginSchema } from 'feature/AuthByUsername';
 import { IArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
 import { NavigateOptions, To } from 'react-router-dom';
-import { IArticlesPageSchema } from 'pages/ArticlePage';
+import { IArticlesPageSchema } from 'pages/ArticlesPage';
 
 export interface IStateSchema {
     user: IUserSchema;

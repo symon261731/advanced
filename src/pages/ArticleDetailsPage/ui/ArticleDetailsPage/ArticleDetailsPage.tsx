@@ -11,6 +11,7 @@ import { AddCommentForm } from 'feature/AddNewComment';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Button } from 'shared/uikit/Button/Button';
+import { PageWrapper } from 'shared/uikit/PageWrapper/PageWrapper';
 import { addCommentForActicle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slice/ArticleDetailsCommentsSlice';
 import { getArticleCommentsIsLoading, getArticleCommentsError } from '../../model/selectors/comments';
@@ -45,24 +46,24 @@ const ArticleDetailsPage = memo(() => {
 
     if (!id) {
         return (
-            <div>
-                {t('Статья не найдена')}
-            </div>
+            <PageWrapper>{t('Статья не найдена')}</PageWrapper>
         );
     }
 
     return (
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <Button onClick={returnToArticleList}>{t('<Вернуться')}</Button>
-            <div>
-                <ArticleDetails id={id} />
-                <Text className={classes.commentBlockTitle} title={t('Комментарии')} size={ETextSize.L} />
-                <AddCommentForm onSendComment={(text) => onSendComment(text)} className={classes.addCommentForm} />
-                { !commentsError
-                    ? <CommentList isLoading={commentsIsLoading} comments={comments || []} />
-                    : <Text theme={EThemeText.ERROR} title={commentsError} />}
-            </div>
-        </DynamicModuleLoader>
+        <PageWrapper>
+            <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+                <Button onClick={returnToArticleList}>{t('<Вернуться')}</Button>
+                <div>
+                    <ArticleDetails id={id} />
+                    <Text className={classes.commentBlockTitle} title={t('Комментарии')} size={ETextSize.L} />
+                    <AddCommentForm onSendComment={(text) => onSendComment(text)} className={classes.addCommentForm} />
+                    {!commentsError
+                        ? <CommentList isLoading={commentsIsLoading} comments={comments || []} />
+                        : <Text theme={EThemeText.ERROR} title={commentsError} />}
+                </div>
+            </DynamicModuleLoader>
+        </PageWrapper>
     );
 });
 

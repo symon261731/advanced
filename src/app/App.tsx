@@ -22,9 +22,7 @@ export default function App() {
                 <Navbar />
                 <div className="content-page">
                     <Sidebar />
-                    <div className="page-wrapper">
-                        {inited && <AppRouter />}
-                    </div>
+                    {inited && <AppRouter />}
                 </div>
             </Suspense>
         </div>

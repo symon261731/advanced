@@ -1,10 +1,13 @@
 import { useTranslation } from 'react-i18next';
+import { PageWrapper } from 'shared/uikit/PageWrapper/PageWrapper';
 
 const AboutPage = () => {
     const { t } = useTranslation();
 
     return (
-        <div>{t('О сайте')}</div>
+        <PageWrapper>
+            <div>{t('О сайте')}</div>
+        </PageWrapper>
     );
 };
 

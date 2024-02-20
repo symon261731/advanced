@@ -1,5 +1,6 @@
 import { classNames } from 'shared/helpers/classNames';
 import { useTranslation } from 'react-i18next';
+import { PageWrapper } from 'shared/uikit/PageWrapper/PageWrapper';
 import classes from './NotFoundPage.module.scss';
 
 interface Props {
@@ -9,7 +10,9 @@ interface Props {
 const NotFoundPage = ({ className }: Props) => {
     const { t } = useTranslation();
 
-    return (<div className={classNames(classes.NotFoundPage, {}, [className])}>{t('Страница не найдена')}</div>);
+    return (
+        <PageWrapper className={classNames(classes.NotFoundPage, {}, [className])}>{t('Страница не найдена')}</PageWrapper>
+    );
 };
 
 export default NotFoundPage;

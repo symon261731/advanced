@@ -21,14 +21,24 @@ const articleDetailsCommentsSlice = createSlice({
         ids: [],
         entities: {},
         view: EArticleView.BIG,
+        page: 1,
+        hasMore: true,
     }),
     reducers: {
         setView: (state, action: PayloadAction<EArticleView>) => {
             state.view = action.payload;
             localStorage.setItem(ARTICLES_VIEW_LOCALSTORAGE_KEY, state.view);
         },
+        setPage: (state, action: PayloadAction<number>) => {
+            state.page = action.payload;
+        },
+        setLimit: (state, action: PayloadAction<number>) => {
+
+        },
         initState: (state) => {
-            state.view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as EArticleView;
+            const view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as EArticleView;
+            state.view = view;
+            state.limit = view === EArticleView.BIG ? 4 : 9;
         },
     },
     extraReducers: (builder) => {
@@ -43,7 +53,8 @@ const articleDetailsCommentsSlice = createSlice({
             })
             .addCase(fetchArticles.fulfilled, (state, action: PayloadAction<IArticle[]>) => {
                 state.isLoading = false;
-                articlesAdapter.setAll(state, action);
+                articlesAdapter.addMany(state, action.payload);
+                state.hasMore = action.payload?.length > 0;
             });
     },
 });
