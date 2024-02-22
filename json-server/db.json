@@ -127,7 +127,8 @@
           "title": "Рисунок 1 - скриншот сайта"
         }
       ]
-    },{
+    },
+    {
       "id": 3,
       "title": "Unity news",
       "subtitle": "что нового в JavaScript",
@@ -262,7 +263,8 @@
           "title": "Рисунок 1 - скриншот сайта"
         }
       ]
-    },{
+    },
+    {
       "id": 6,
       "title": "Unity news",
       "subtitle": "что нового в JavaScript",
@@ -397,7 +399,8 @@
           "title": "Рисунок 1 - скриншот сайта"
         }
       ]
-    },{
+    },
+    {
       "id": 643262343,
       "title": "Unity news",
       "subtitle": "что нового в JavaScript",
@@ -532,7 +535,8 @@
           "title": "Рисунок 1 - скриншот сайта"
         }
       ]
-    },{
+    },
+    {
       "id": 64389080412,
       "title": "Unity news",
       "subtitle": "что нового в JavaScript",
@@ -667,7 +671,8 @@
           "title": "Рисунок 1 - скриншот сайта"
         }
       ]
-    },{
+    },
+    {
       "id": 36234,
       "title": "Unity news",
       "subtitle": "что нового в JavaScript",
@@ -766,6 +771,12 @@
       "userId": 2,
       "text": "хе хе хе",
       "id": "A2N8eyB"
+    },
+    {
+      "articleId": 3,
+      "userId": "1",
+      "text": "hello",
+      "id": "BbYOqZW"
     }
   ],
   "profile": [

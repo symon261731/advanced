@@ -12,12 +12,9 @@ interface IProps {
 }
 
 export const StoreProvider = ({ children, initialState, asyncReducers }:IProps) => {
-    const navigate = useNavigate();
-
     const store = createReduxStore(
         initialState as IStateSchema,
         asyncReducers as ReducersMapObject<IStateSchema>,
-        navigate,
     );
 
     return (

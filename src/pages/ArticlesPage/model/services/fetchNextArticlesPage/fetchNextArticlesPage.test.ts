@@ -1,11 +1,11 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { fetchArticles } from 'pages/ArticlesPage/model/services/fetchArticles';
-import { fetchNextActiclesPage } from './fetchNextActiclesPage';
+import { fetchArticles } from '../fetchArticles/fetchArticles';
+import { fetchNextArticlesPage } from './fetchNextArticlesPage';
 
-jest.mock('./fetchArticles');
+jest.mock('../fetchArticles/fetchArticles');
 describe('fetchNextArticlesPage.test', () => {
     test('success', () => {
-        const thunk = new TestAsyncThunk(fetchNextActiclesPage, {
+        const thunk = new TestAsyncThunk(fetchNextArticlesPage, {
             articlesPage: {
                 page: 2,
                 ids: [1, 3, 45, 6, 7, 1],
@@ -23,7 +23,7 @@ describe('fetchNextArticlesPage.test', () => {
     });
 
     test('notHasMore', async () => {
-        const thunk = new TestAsyncThunk(fetchNextActiclesPage, {
+        const thunk = new TestAsyncThunk(fetchNextArticlesPage, {
             articlesPage: {
                 page: 2,
                 ids: [],

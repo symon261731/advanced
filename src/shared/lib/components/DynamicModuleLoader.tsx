@@ -24,9 +24,12 @@ export const DynamicModuleLoader: FC<IProps> = (props:IProps) => {
 
     // eslint-disable-next-line consistent-return
     useEffect(() => {
+        const mountedReducers = Object.keys(store.reducerManager.getReducerMap());
         Object.entries(reducers).forEach(([name, reducer]) => {
-            store.reducerManager.add(name as TStateSchemaKey, reducer);
-            dispatch({ type: `@INIT ${name} reducer` });
+            if (!mountedReducers.some((mountReducerName) => mountReducerName === name)) {
+                store.reducerManager.add(name as TStateSchemaKey, reducer);
+                dispatch({ type: `@INIT ${name} reducer` });
+            }
         });
 
         if (removeAfterUnmount) {

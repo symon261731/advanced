@@ -5,17 +5,13 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { PageWrapper } from 'shared/uikit/PageWrapper/PageWrapper';
-import { fetchNextActiclesPage } from '../model/services/fetchNextActiclesPage';
+import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage';
+import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { articlePageActions, articlePageReducer, getArticles } from '../model/slice/articlePageSlice';
-import { fetchArticles } from '../model/services/fetchArticles';
-import {
-    getArticleIsLoading, getArticleError, getArticleView, getArticlePageNumber, getArticleHasMore,
-} from '../model/selectors/getArticleSelectors';
+import { getArticleIsLoading, getArticleError, getArticleView } from '../model/selectors/getArticleSelectors';
 import classes from './ArticlesPage.module.scss';
 
-const reducers: TReducerList = {
-    articlesPage: articlePageReducer,
-};
+const reducers: TReducerList = { articlesPage: articlePageReducer };
 
 const ArticlesPage = memo(() => {
     const dispatch = useAppDispatch();
@@ -29,12 +25,11 @@ const ArticlesPage = memo(() => {
     };
 
     const onLoadNextPart = useCallback(() => {
-        dispatch(fetchNextActiclesPage());
+        dispatch(fetchNextArticlesPage());
     }, [dispatch]);
 
     useInitialEffect(() => {
-        dispatch(articlePageActions.initState());
-        dispatch(fetchArticles({ page: 1 }));
+        dispatch(initArticlesPage());
     });
 
     if (error) {
@@ -42,7 +37,7 @@ const ArticlesPage = memo(() => {
     }
 
     return (
-        <DynamicModuleLoader reducers={reducers}>
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
             <PageWrapper onScrollEnd={onLoadNextPart}>
                 <ArticleViewSelect view={view} onClick={onChangeView} className={classes.viewSelect} />
                 <div>

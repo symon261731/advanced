@@ -24,7 +24,6 @@ export interface IStateSchema {
 }
 
 export type TStateSchemaKey = keyof IStateSchema;
-
 export interface IReducerManager {
     getReducerMap: () => ReducersMapObject<IStateSchema>,
     reduce: (state: IStateSchema, action: AnyAction)=> CombinedState<IStateSchema>,
