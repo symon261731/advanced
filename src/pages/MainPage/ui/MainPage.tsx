@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { PageWrapper } from 'shared/uikit/PageWrapper/PageWrapper';
+import { PageWrapper } from 'widgets/PageWrapper/PageWrapper';
 
 const MainPage = () => {
     const { t } = useTranslation();

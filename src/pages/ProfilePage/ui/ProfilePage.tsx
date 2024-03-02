@@ -21,7 +21,7 @@ import { EValidationError } from 'enteties/Profile/model/types/profile';
 import { useTranslation } from 'react-i18next';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useParams } from 'react-router-dom';
-import { PageWrapper } from 'shared/uikit/PageWrapper/PageWrapper';
+import { PageWrapper } from 'widgets/PageWrapper/PageWrapper';
 import classes from './ProfilePage.module.scss';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 

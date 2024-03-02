@@ -5,14 +5,16 @@ import { AxiosInstance } from 'axios';
 import { IArticleDetailsSchema } from 'enteties/Article';
 import { IProfileSchema } from 'enteties/Profile';
 import { IUserSchema } from 'enteties/User';
-import { IAddCommentFormSchema } from 'feature/AddNewComment';
+import { IAddCommentFormSchema } from 'feature/AddComment';
 import { ILoginSchema } from 'feature/AuthByUsername';
 import { IArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
 import { NavigateOptions, To } from 'react-router-dom';
 import { IArticlesPageSchema } from 'pages/ArticlesPage';
+import { IScrollSaveSchema } from 'feature/ScrollSave';
 
 export interface IStateSchema {
     user: IUserSchema;
+    scrollPosition: IScrollSaveSchema;
 
     // async redusers
     loginForm?: ILoginSchema;

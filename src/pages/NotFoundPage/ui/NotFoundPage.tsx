@@ -1,6 +1,6 @@
 import { classNames } from 'shared/helpers/classNames';
 import { useTranslation } from 'react-i18next';
-import { PageWrapper } from 'shared/uikit/PageWrapper/PageWrapper';
+import { PageWrapper } from 'widgets/PageWrapper/PageWrapper';
 import classes from './NotFoundPage.module.scss';
 
 interface Props {

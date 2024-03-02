@@ -4,7 +4,7 @@ import { DynamicModuleLoader, TReducerList } from 'shared/lib/components/Dynamic
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { PageWrapper } from 'shared/uikit/PageWrapper/PageWrapper';
+import { PageWrapper } from 'widgets/PageWrapper/PageWrapper';
 import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage';
 import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { articlePageActions, articlePageReducer, getArticles } from '../model/slice/articlePageSlice';
