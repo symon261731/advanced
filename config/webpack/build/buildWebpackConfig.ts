@@ -22,7 +22,6 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
             // обработка разных типов расширений
             rules: buildLoaders(options),
         },
-        target: mode === 'development' ? 'web' : 'browserslist',
 
         // указываются типы файлов для которых при импорте не нужно указывать расширение
         resolve: buildResolvers(options.paths),
