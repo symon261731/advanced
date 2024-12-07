@@ -17,9 +17,7 @@ describe('fetchNextArticlesPage.test', () => {
 
         thunk.callThunk();
 
-        expect(fetchArticles).toHaveBeenCalledWith({
-            page: 3,
-        });
+        expect(fetchArticles).toBeCalledTimes(1);
     });
 
     test('notHasMore', async () => {

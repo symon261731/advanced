@@ -1,4 +1,6 @@
 import { classNames } from 'shared/helpers/classNames';
+import { useTranslation } from 'react-i18next';
+import { Text } from 'shared/uikit/Text/Text';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import classes from './ArticleList.module.scss';
 import { EArticleView, IArticle } from '../../model/types/article';
@@ -19,6 +21,15 @@ export const ArticleList = ({
     className, articles, isLoading, view,
 } : IProps) => {
     const renderArticle = (article: IArticle) => <ArticleListItem key={article.id} article={article} view={view} />;
+    const { t } = useTranslation();
+
+    if (!articles.length && !isLoading) {
+        return (
+            <div className={classNames('', {}, [className, classes[view]])}>
+                <Text title={t('Статьи не найдены')} />
+            </div>
+        );
+    }
 
     return (
         <div className={classNames('', {}, [className, classes[view]])}>

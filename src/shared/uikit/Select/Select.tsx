@@ -1,24 +1,24 @@
 import {
-    ChangeEvent, memo, useCallback, useMemo,
+    ChangeEvent, useCallback, useMemo,
 } from 'react';
 import { TMods, classNames } from 'shared/helpers/classNames';
 import classes from './Select.module.scss';
 
-export interface ISelectOptions {
-    value: string;
+export interface ISelectOptions<T extends string> {
+    value: T;
     content: string;
 }
 
-interface IProps {
+interface IProps<T extends string> {
  className?: string;
  label?: string;
- options?: ISelectOptions[];
+ options?: ISelectOptions<T>[];
  readonly?: boolean
- value?: string;
- onChange?: (value: string) => void;
+ value?: T;
+ onChange?: (value: T) => void;
 }
 
-export const Select = memo((props:IProps) => {
+export const Select = <SelectGenericType extends string>(props:IProps<SelectGenericType>) => {
     const {
         className, label, options, value, onChange, readonly = false,
     } = props;
@@ -30,7 +30,7 @@ export const Select = memo((props:IProps) => {
 
     const onChangeHandler = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
         if (onChange) {
-            onChange(e.target.value);
+            onChange(e.target.value as SelectGenericType);
         }
     }, [onChange]);
 
@@ -44,6 +44,4 @@ export const Select = memo((props:IProps) => {
             </select>
         </div>
     );
-});
-
-Select.displayName = 'Select';
+};

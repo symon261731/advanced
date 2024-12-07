@@ -9,10 +9,11 @@ export enum EInputTheme {
     CLEAR = 'CLEAR',
 }
 
-interface IProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readonly'> {
+interface IProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readonly' | 'size'> {
     className?: string;
     value?: string | number;
     onChange?: (value: string) => void;
+    size?: 'sm' | 'md' | 'lg';
     theme?: EInputTheme;
     autoFocus?: boolean;
     readOnly?: boolean;
@@ -23,6 +24,7 @@ export const Input = memo((props:IProps) => {
         className,
         value,
         onChange,
+        size = 'md',
         theme = EInputTheme.PRIMARY,
         readOnly = false,
         autoFocus,
@@ -45,7 +47,7 @@ export const Input = memo((props:IProps) => {
         <input
             readOnly={readOnly}
             ref={inputRef}
-            className={classNames(classes.Input, { [classes.readOnly]: readOnly }, [className, classes[theme]])}
+            className={classNames(classes.Input, { [classes.readOnly]: readOnly }, [classes[theme], classes[size], className])}
             value={value}
             onChange={onChangeHandler}
             {...otherProps}

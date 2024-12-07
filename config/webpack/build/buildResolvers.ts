@@ -10,5 +10,8 @@ export function buildResolvers(paths: BuildPaths): ResolveOptions {
         modules: [paths.src, 'node_modules'],
         mainFiles: ['index'],
         alias: {},
+        fallback: {
+            timers: false,
+        },
     };
 }

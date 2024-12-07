@@ -1,28 +1,49 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { IThunkConfig } from 'app/providers/StoreProvider';
 import { IArticle } from 'enteties/Article';
-import { getArticleLimit } from 'pages/ArticlesPage/model/selectors/getArticleSelectors';
+import { addQueryParams } from 'shared/lib/url/addQueryParams/addQuaryParams';
+import { EArticleType } from 'enteties/Article/model/types/article';
+import {
+    getArticleLimit,
+    getArticleSortField,
+    getArticleSortByValue,
+    getArticleSearchText,
+    getArticlePageNumber,
+    getArticleType,
+} from '../../selectors/getArticleSelectors';
 
-interface IFetchArticlesArgs {
-    page?: number
+interface IFetchArticleProps {
+    replace?: boolean;
 }
 
 export const fetchArticles = createAsyncThunk<
     IArticle[],
-    IFetchArticlesArgs,
+    IFetchArticleProps,
     IThunkConfig<string>
 >(
     'articlePageSlice/fetchArticles',
-    async ({ page = 1 }, thunkApi) => {
-        const { extra, rejectWithValue } = thunkApi;
-        const limit = getArticleLimit(thunkApi.getState());
+    async (_, thunkApi) => {
+        const { extra, rejectWithValue, getState } = thunkApi;
+        const page = getArticlePageNumber(getState());
+        const limit = getArticleLimit(getState());
+        const searchText = getArticleSearchText(getState());
+        const sortByValue = getArticleSortByValue(getState());
+        const sortField = getArticleSortField(getState());
+        const type = getArticleType(getState());
 
         try {
+            addQueryParams({
+                sort: sortField, order: sortByValue, search: searchText, type,
+            });
             const response = await extra.api.get<IArticle[]>('/articles', {
                 params: {
                     _expand: 'user',
                     _limit: limit,
                     _page: page,
+                    _sort: sortByValue,
+                    _order: sortField,
+                    q: searchText ?? undefined,
+                    type: type === EArticleType.ALL ? undefined : type,
                 },
             });
 

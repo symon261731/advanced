@@ -132,9 +132,9 @@
       "id": 3,
       "title": "Unity news",
       "subtitle": "что нового в JavaScript",
-      "views": 1022,
+      "views": 4123,
       "img": "https://assets-global.website-files.com/63fda77e5fd49598bbf00892/6436b3d216cc13283a8994dd_berita-211-berkenalan-dengan-fitur-fitur-unity-3d-20200716-153311.png",
-      "createAt": "26.02.2022",
+      "createAt": "26.02.2010",
       "userId": "1",
       "type": [
         "IT"
@@ -176,14 +176,12 @@
       "id": 4,
       "title": "JavaScript news",
       "subtitle": "что нового в JavaScript",
-      "views": 1022,
+      "views": 62134,
       "img": "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
-      "createAt": "26.02.2022",
+      "createAt": "21.02.2022",
       "userId": "1",
       "type": [
-        "IT",
-        "SCIENCE",
-        "ECONOMICS"
+        "IT"
       ],
       "blocks": [
         {
@@ -222,9 +220,9 @@
       "id": 5,
       "title": "Java",
       "subtitle": "что нового в JavaScript",
-      "views": 1022,
+      "views": 1412022,
       "img": "https://changellenge.com/upload/iblock/8fb/8fbfea7d04945d7c47c62d0617866ff7.jpg",
-      "createAt": "26.02.2022",
+      "createAt": "26.02.2020",
       "userId": "1",
       "type": [
         "IT",
@@ -270,7 +268,7 @@
       "subtitle": "что нового в JavaScript",
       "views": 1022,
       "img": "https://assets-global.website-files.com/63fda77e5fd49598bbf00892/6436b3d216cc13283a8994dd_berita-211-berkenalan-dengan-fitur-fitur-unity-3d-20200716-153311.png",
-      "createAt": "26.02.2022",
+      "createAt": "26.02.2024",
       "userId": "1",
       "type": [
         "IT"
@@ -312,9 +310,9 @@
       "id": 1123,
       "title": "JavaScript news",
       "subtitle": "что нового в JavaScript",
-      "views": 1022,
+      "views": 10232,
       "img": "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
-      "createAt": "26.02.2022",
+      "createAt": "26.02.2012",
       "userId": "1",
       "type": [
         "IT",
@@ -358,9 +356,9 @@
       "id": 251324,
       "title": "Java",
       "subtitle": "что нового в JavaScript",
-      "views": 1022,
+      "views": 10122,
       "img": "https://changellenge.com/upload/iblock/8fb/8fbfea7d04945d7c47c62d0617866ff7.jpg",
-      "createAt": "26.02.2022",
+      "createAt": "21.03.2022",
       "userId": "1",
       "type": [
         "IT",
@@ -402,14 +400,14 @@
     },
     {
       "id": 643262343,
-      "title": "Unity news",
-      "subtitle": "что нового в JavaScript",
-      "views": 1022,
+      "title": "Новости экономики",
+      "subtitle": "Инфляция",
+      "views": 31022,
       "img": "https://assets-global.website-files.com/63fda77e5fd49598bbf00892/6436b3d216cc13283a8994dd_berita-211-berkenalan-dengan-fitur-fitur-unity-3d-20200716-153311.png",
-      "createAt": "26.02.2022",
+      "createAt": "26.06.2022",
       "userId": "2",
       "type": [
-        "IT"
+        "ECONOMICS"
       ],
       "blocks": [
         {
@@ -448,9 +446,8 @@
       "id": 14241632674345,
       "title": "JavaScript news",
       "subtitle": "что нового в JavaScript",
-      "views": 1022,
       "img": "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
-      "createAt": "26.02.2022",
+      "createAt": "26.08.2022",
       "userId": "2",
       "type": [
         "IT",
@@ -494,9 +491,9 @@
       "id": 212351274353412,
       "title": "Java",
       "subtitle": "что нового в JavaScript",
-      "views": 1022,
+      "views": 10200,
       "img": "https://changellenge.com/upload/iblock/8fb/8fbfea7d04945d7c47c62d0617866ff7.jpg",
-      "createAt": "26.02.2022",
+      "createAt": "11.08.2016",
       "userId": "2",
       "type": [
         "IT",
@@ -777,6 +774,18 @@
       "userId": "1",
       "text": "hello",
       "id": "BbYOqZW"
+    },
+    {
+      "articleId": 64389080412,
+      "userId": "1",
+      "text": "тестовый комментарий",
+      "id": "M_lBhWQ"
+    },
+    {
+      "articleId": 3,
+      "userId": "1",
+      "text": "test",
+      "id": "CcUnPCH"
     }
   ],
   "profile": [

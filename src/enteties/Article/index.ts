@@ -1,6 +1,13 @@
 export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails';
 
-export { IArticle, EArticleView } from './model/types/article';
+export {
+    IArticle,
+    EArticleView,
+    EArticleSortField,
+    EArticleBlockType,
+    EArticleType,
+
+} from './model/types/article';
 
 export { IArticleDetailsSchema } from './model/types/articleDetailsSchema';
 

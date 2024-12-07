@@ -1,0 +1,12 @@
+.Tabs {
+    display: flex;
+    gap: 8px;
+}
+
+.singleTab {
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
