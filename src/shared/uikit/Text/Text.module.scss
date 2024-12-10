@@ -2,14 +2,6 @@
     text-decoration: none;
 }
 
-.title {
-    color: var(--primary-color);
-}
-
-.text {
-    color: var(--secondary-color);
-}
-
 .error {
     color: var(--red-color);
 }
@@ -53,5 +45,25 @@
 
     .text {
         font: var(--font-xl);
+    }
+}
+
+.primary {
+    .title {
+        color: var(--primary-color);
+    }
+
+    .text {
+        color: var(--secondary-color);
+    }
+}
+
+.inverted {
+    .title {
+        color: var(--inverted-primary-color);
+    }
+
+    .text {
+        color: var(--inverted-secondary-color);
     }
 }

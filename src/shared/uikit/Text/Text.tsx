@@ -4,6 +4,7 @@ import classes from './Text.module.scss';
 
 export enum EThemeText {
     PRIMARY = 'primary',
+    INVERTED = 'inverted',
     ERROR = 'error'
 }
 
@@ -33,7 +34,7 @@ export const Text = memo((props:IProps) => {
         className,
         title,
         text,
-        theme,
+        theme = EThemeText.PRIMARY,
         align = ETextAlign.LEFT,
         size = ETextSize.M,
     } = props;
@@ -43,9 +44,9 @@ export const Text = memo((props:IProps) => {
     };
 
     return (
-        <div className={classNames(classes.Text, {}, [classes[align], classes[size]])}>
-            {title && <p className={classNames(classes.title, mods, [className])}>{title}</p>}
-            {text && <p className={classNames(classes.text, mods, [className])}>{text}</p>}
+        <div className={classNames(classes.Text, {}, [classes[align], classes[size], classes[theme]])}>
+            {title && <p className={classNames(classes.title, mods, [classes[theme], className])}>{title}</p>}
+            {text && <p className={classNames(classes.text, mods, [classes[theme], className])}>{text}</p>}
         </div>
     );
 });

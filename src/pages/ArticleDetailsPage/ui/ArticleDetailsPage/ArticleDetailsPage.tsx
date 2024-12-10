@@ -3,15 +3,13 @@ import { ArticleDetails, ArticleList, EArticleView } from 'enteties/Article';
 import { CommentList } from 'enteties/Comment';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { ETextSize, EThemeText, Text } from 'shared/uikit/Text/Text';
 import { DynamicModuleLoader, TReducerList } from 'shared/lib/components/DynamicModuleLoader';
 import { useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { AddCommentForm } from 'feature/AddComment';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { Button } from 'shared/uikit/Button/Button';
 import { PageWrapper } from 'widgets/PageWrapper/PageWrapper';
 import {
     fetchArticleRecommendations,
@@ -24,6 +22,7 @@ import classes from './ArticleDetailsPage.module.scss';
 import { getArticleRecommendations } from '../../model/slice/articleDetailsRecommendationsSlice';
 import { getArticleRecommendationsError, getArticleRecommendationsIsLoading } from '../../model/selectors/rocommendations';
 import { articleDetailsReducer } from '../../model/slice';
+import { ArticleDetailsPageHeader } from './ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 const reducers: TReducerList = {
     articleDetailsPage: articleDetailsReducer,
@@ -32,7 +31,6 @@ const reducers: TReducerList = {
 const ArticleDetailsPage = memo(() => {
     const { t } = useTranslation('article');
     const { id } = useParams<{id: string}>();
-    const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
     const comments = useSelector(getArticleComments.selectAll);
@@ -46,10 +44,6 @@ const ArticleDetailsPage = memo(() => {
     const onSendComment = useCallback((text: string) => {
         dispatch(addCommentForActicle(text));
     }, [dispatch]);
-
-    const returnToArticleList = useCallback(() => {
-        navigate(RoutePath.articles);
-    }, [navigate]);
 
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
@@ -65,17 +59,21 @@ const ArticleDetailsPage = memo(() => {
     return (
         <PageWrapper>
             <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-                <Button onClick={returnToArticleList}>{t('<Вернуться')}</Button>
+                <ArticleDetailsPageHeader />
                 <div>
                     <ArticleDetails id={id} />
                     <div>
                         <Text className={classes.blockTitle} title={t('Рекомендуем')} size={ETextSize.L} />
-                        <ArticleList
-                            target="_blank"
-                            view={EArticleView.SMALL}
-                            articles={recommendations}
-                            isLoading={recommendationsIsLoading}
-                        />
+                        {!recommendationsError
+                            ? (
+                                <ArticleList
+                                    target="_blank"
+                                    view={EArticleView.SMALL}
+                                    articles={recommendations}
+                                    isLoading={recommendationsIsLoading}
+                                />
+                            )
+                            : <Text theme={EThemeText.ERROR} title={recommendationsError} />}
                     </div>
                     <div>
                         <Text className={classes.blockTitle} title={t('Комментарии')} size={ETextSize.L} />
