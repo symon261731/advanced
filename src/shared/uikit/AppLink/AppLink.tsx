@@ -1,6 +1,6 @@
 import { Link, LinkProps } from 'react-router-dom';
 import { classNames } from 'shared/helpers/classNames';
-import { memo } from 'react';
+import { memo, ReactElement } from 'react';
 import classes from './AppLink.module.scss';
 
 export enum TAppLinkTheme {

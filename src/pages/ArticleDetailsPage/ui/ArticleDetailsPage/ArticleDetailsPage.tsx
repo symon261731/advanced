@@ -1,4 +1,5 @@
-import { ArticleDetails } from 'enteties/Article';
+/* eslint-disable i18next/no-literal-string */
+import { ArticleDetails, ArticleList, EArticleView } from 'enteties/Article';
 import { CommentList } from 'enteties/Comment';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -12,25 +13,35 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Button } from 'shared/uikit/Button/Button';
 import { PageWrapper } from 'widgets/PageWrapper/PageWrapper';
+import {
+    fetchArticleRecommendations,
+} from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
 import { addCommentForActicle } from '../../model/services/addCommentForArticle/addCommentForArticle';
-import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slice/ArticleDetailsCommentsSlice';
+import { getArticleComments } from '../../model/slice/ArticleDetailsCommentsSlice';
 import { getArticleCommentsIsLoading, getArticleCommentsError } from '../../model/selectors/comments';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import classes from './ArticleDetailsPage.module.scss';
+import { getArticleRecommendations } from '../../model/slice/articleDetailsRecommendationsSlice';
+import { getArticleRecommendationsError, getArticleRecommendationsIsLoading } from '../../model/selectors/rocommendations';
+import { articleDetailsReducer } from '../../model/slice';
 
 const reducers: TReducerList = {
-    articleDetailsComments: articleDetailsCommentsReducer,
+    articleDetailsPage: articleDetailsReducer,
 };
 
 const ArticleDetailsPage = memo(() => {
     const { t } = useTranslation('article');
     const { id } = useParams<{id: string}>();
     const navigate = useNavigate();
-
     const dispatch = useAppDispatch();
+
     const comments = useSelector(getArticleComments.selectAll);
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
     const commentsError = useSelector(getArticleCommentsError);
+
+    const recommendations = useSelector(getArticleRecommendations.selectAll);
+    const recommendationsIsLoading = useSelector(getArticleRecommendationsIsLoading);
+    const recommendationsError = useSelector(getArticleRecommendationsError);
 
     const onSendComment = useCallback((text: string) => {
         dispatch(addCommentForActicle(text));
@@ -42,6 +53,7 @@ const ArticleDetailsPage = memo(() => {
 
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
+        dispatch(fetchArticleRecommendations());
     });
 
     if (!id) {
@@ -56,11 +68,22 @@ const ArticleDetailsPage = memo(() => {
                 <Button onClick={returnToArticleList}>{t('<Вернуться')}</Button>
                 <div>
                     <ArticleDetails id={id} />
-                    <Text className={classes.commentBlockTitle} title={t('Комментарии')} size={ETextSize.L} />
-                    <AddCommentForm onSendComment={(text) => onSendComment(text)} className={classes.addCommentForm} />
-                    {!commentsError
-                        ? <CommentList isLoading={commentsIsLoading} comments={comments || []} />
-                        : <Text theme={EThemeText.ERROR} title={commentsError} />}
+                    <div>
+                        <Text className={classes.blockTitle} title={t('Рекомендуем')} size={ETextSize.L} />
+                        <ArticleList
+                            target="_blank"
+                            view={EArticleView.SMALL}
+                            articles={recommendations}
+                            isLoading={recommendationsIsLoading}
+                        />
+                    </div>
+                    <div>
+                        <Text className={classes.blockTitle} title={t('Комментарии')} size={ETextSize.L} />
+                        <AddCommentForm onSendComment={(text) => onSendComment(text)} className={classes.addCommentForm} />
+                        {!commentsError
+                            ? <CommentList isLoading={commentsIsLoading} comments={comments || []} />
+                            : <Text theme={EThemeText.ERROR} title={commentsError} />}
+                    </div>
                 </div>
             </DynamicModuleLoader>
         </PageWrapper>

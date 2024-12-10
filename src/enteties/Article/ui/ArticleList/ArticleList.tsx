@@ -1,6 +1,7 @@
 import { classNames } from 'shared/helpers/classNames';
 import { useTranslation } from 'react-i18next';
 import { Text } from 'shared/uikit/Text/Text';
+import { HTMLAttributeAnchorTarget } from 'react';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import classes from './ArticleList.module.scss';
 import { EArticleView, IArticle } from '../../model/types/article';
@@ -15,12 +16,13 @@ interface IProps {
     articles: IArticle[];
     isLoading?: boolean;
     view: EArticleView;
+    target?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticleList = ({
-    className, articles, isLoading, view,
+    className, articles, isLoading, view, target,
 } : IProps) => {
-    const renderArticle = (article: IArticle) => <ArticleListItem key={article.id} article={article} view={view} />;
+    const renderArticle = (article: IArticle) => <ArticleListItem target={target} key={article.id} article={article} view={view} />;
     const { t } = useTranslation();
 
     if (!articles.length && !isLoading) {
