@@ -45,7 +45,7 @@ module.exports = {
         'consistent-return': 0,
         'no-unused-vars': 1,
         'no-shadow': 0,
-        'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['data-testid', 'to', 'reducerName'] }],
+        'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['data-testid', 'to', 'reducerName', 'target'] }],
         'jsx-a11y/click-events-have-key-events': 0,
         'jsx-a11y/no-static-element-interactions': 0,
         'react-hooks/rules-of-hooks': 2,

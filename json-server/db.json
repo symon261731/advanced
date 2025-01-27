@@ -786,13 +786,19 @@
       "userId": "1",
       "text": "test",
       "id": "CcUnPCH"
+    },
+    {
+      "articleId": 1,
+      "userId": "1",
+      "text": "test comment after refactoring",
+      "id": "ltDaSK_"
     }
   ],
   "profile": [
     {
       "id": "1",
       "firstName": "Кеко",
-      "lastName": "Хори",
+      "lastName": "Хоримия",
       "age": 16,
       "currency": "EUR",
       "country": "Россия",

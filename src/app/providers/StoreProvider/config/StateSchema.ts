@@ -3,7 +3,7 @@ import {
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { IArticleDetailsSchema } from 'enteties/Article';
-import { IProfileSchema } from 'enteties/Profile';
+import { IProfileSchema } from 'feature/EditableProfileCard';
 import { IUserSchema } from 'enteties/User';
 import { IAddCommentFormSchema } from 'feature/AddComment';
 import { ILoginSchema } from 'feature/AuthByUsername';
@@ -11,11 +11,12 @@ import { IArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
 import { NavigateOptions, To } from 'react-router-dom';
 import { IArticlesPageSchema } from 'pages/ArticlesPage';
 import { IScrollSaveSchema } from 'feature/ScrollSave';
+import { rtkApi } from 'shared/api/rtkApi';
 
 export interface IStateSchema {
     user: IUserSchema;
     scrollPosition: IScrollSaveSchema;
-
+    [rtkApi.reducerPath] : ReturnType<typeof rtkApi.reducer>;
     // async redusers
     loginForm?: ILoginSchema;
     profile?: IProfileSchema;

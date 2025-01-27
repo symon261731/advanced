@@ -38,6 +38,6 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         },
 
         // плагины
-        plugins: buildPlugins(paths.pathToHtml, isDev, apiUrl, options.project),
+        plugins: buildPlugins(paths, isDev, apiUrl, options.project),
     };
 }

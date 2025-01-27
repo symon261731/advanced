@@ -9,6 +9,8 @@ export default (env: BuildEnv) => {
         entry: path.resolve(__dirname, 'src', 'index.tsx'),
         build: path.resolve(__dirname, 'build'),
         src: path.resolve(__dirname, 'src'),
+        localesPath: path.resolve(__dirname, 'public', 'locales'),
+        localesBuildForProdPath: path.resolve(__dirname, 'build', 'locales'),
     };
 
     const mode = env.mode || 'development';

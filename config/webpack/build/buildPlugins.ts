@@ -3,8 +3,10 @@ import webpack, { DefinePlugin } from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
+import { BuildPaths } from './types/config';
 
-export function buildPlugins(pathToHtml: string, isDev: boolean, apiUrl: string, project: string): webpack.WebpackPluginInstance[] {
+export function buildPlugins(paths: BuildPaths, isDev: boolean, apiUrl: string, project: string): webpack.WebpackPluginInstance[] {
     const pluginsOnlyForDev = isDev ? [
         new BundleAnalyzerPlugin(
             { openAnalyzer: false },
@@ -14,7 +16,7 @@ export function buildPlugins(pathToHtml: string, isDev: boolean, apiUrl: string,
 
     return [
         new HtmlWebpackPlugin({
-            template: pathToHtml,
+            template: paths.pathToHtml,
         }),
         new webpack.ProgressPlugin(),
         new MiniCssExtractPlugin({
@@ -27,6 +29,11 @@ export function buildPlugins(pathToHtml: string, isDev: boolean, apiUrl: string,
             __PROJECT__: JSON.stringify(project),
         }),
         new webpack.HotModuleReplacementPlugin(),
+        new CopyPlugin({
+            patterns: [
+                { from: paths.localesPath, to: paths.localesBuildForProdPath },
+            ],
+        }),
         ...pluginsOnlyForDev,
     ];
 }

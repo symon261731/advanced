@@ -20,12 +20,3 @@ export interface IProfile {
     username?: string;
     avatar?: string;
 }
-
-export interface IProfileSchema {
-    data?: IProfile;
-    form?: IProfile;
-    isLoading: boolean;
-    error?: string;
-    readonly: boolean
-    validateError?: EValidationError[];
-}
